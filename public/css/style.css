@@ -16,6 +16,17 @@ li {
   list-style: none;
 }
 
+/* ログイン画面 */
+div figure{
+  margin: 0 0 4rem;
+}
+
+figure img{
+  display: block;
+  margin: auto;
+  width: 80%;
+}
+
 /* サイドバー */
 .sidebar {
   width: 150px;
