@@ -13,6 +13,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-
+        //レコードの生成
+        //bcryptで脆弱性対策
+        User::create([
+            'mail_address' => 'atlas@co.jp',
+            'password' => bcrypt('Atlas2025')
+        ]);
     }
 }
