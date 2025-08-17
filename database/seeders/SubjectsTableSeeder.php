@@ -16,7 +16,9 @@ class SubjectsTableSeeder extends Seeder
     {
         // 国語、数学、英語を追加
         subjects::create([
-            'subjects' =>'国語', '数学', '英語'
+            'subjects' => '国語',
+            'subjects' => '数学',
+            'subjects' => '英語'
         ]);
     }
 }
