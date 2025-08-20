@@ -4,7 +4,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 //データベース操作に関するファザードをインポートする。
-use Illuminate\Support\Facades\DS;
+use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
@@ -19,12 +19,13 @@ class UsersTableSeeder extends Seeder
         //bcryptで脆弱性対策
         //22行目インポートしたDSファザードを使用してUsersテーブルを指定
         //23～24行目insertメゾットにUsersテーブルに登録するカラムを入力
-        DS::table('users')->insert([
+        //初期登録不要のものは記述しない。(deleted_at)テーブルにはNULLで表示される。
+        DB::table('users')->insert([
             'over_name' => '高橋',
             'under_name' => 'アトラ',
             'over_name_kana' => 'タカハシ',
             'under_name_kana' => 'アトラ',
-            'mail_address' => 'atlas@co.jp',
+            'mail_address' => 'Atlas2025@co.jp',
             'sex' => '1',
             'birth_day' => '2025-08-17',
             'role' => '1',
@@ -32,7 +33,6 @@ class UsersTableSeeder extends Seeder
             'remember_token' => 'NULL',
             'created_at' => now(),
             'updated_at' => now(),
-            'deleted_at' => 'NULL'
         ]);
     }
 }
