@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
             'under_name' => 'アトラ',
             'over_name_kana' => 'タカハシ',
             'under_name_kana' => 'アトラ',
-            'mail_address' => 'Atlas2025@co.jp',
+            'mail_address' => 'atlas2025@co.jp',
             'sex' => '1',
             'birth_day' => '2025-08-17',
             'role' => '1',
