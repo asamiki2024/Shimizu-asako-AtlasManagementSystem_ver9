@@ -89,7 +89,7 @@
           </div>
           <div class="selected_engineer">
             <label>選択科目</label>
-              <span>{{ $user->subject->subject }}</span>
+            
           </div>
         </div>
       </div>
