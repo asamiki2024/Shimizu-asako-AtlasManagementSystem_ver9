@@ -13,6 +13,8 @@ use DB;
 
 use App\Models\Users\Subjects;
 use App\Models\Users\User;
+//追加Form requestで作成したファイルをUSE宣言する。
+use App\Http\Requests\RegisterRequest;
 
 class RegisteredUserController extends Controller
 {
