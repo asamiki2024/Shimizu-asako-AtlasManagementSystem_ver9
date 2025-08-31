@@ -5,8 +5,6 @@ namespace App\Models\Users;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\Users\User;
-
 class Subjects extends Model
 {
     use HasFactory;
@@ -19,8 +17,9 @@ class Subjects extends Model
     ];
 
     // リレーションの定義
-    //一対多の「1」側
+    //多対多の「多」側
+    //リレーションの記述の手順①第一引数:相手のモデル(Subjects.php),②第二引数:中間テーブル(subject_users),③第三引数:自分のID(user_id),④第四引数:相手のID(subject_id)
     public function users(){
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsToMany(User::class, 'subject_users', 'subject_id', 'user_id')->withTimestamps();
     }
 }

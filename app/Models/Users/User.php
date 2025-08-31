@@ -7,6 +7,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+//追加
+
+
 use App\Models\Posts\Like;
 use Auth;
 
@@ -67,9 +70,10 @@ class User extends Authenticatable
     }
 
     // リレーションの定義
-    //1対多の「多」側
+    //多対多の「多」側
+    //リレーションの記述の手順①第一引数:相手のモデル(Subjects.php),②第二引数:中間テーブル(subject_users),③第三引数:自分のID(user_id),④第四引数:相手のID(subject_id)
     public function subjects(){
-        return $this->hasMany('App\Models\Subject');
+        return $this->belongsToMany(Subjects::class, 'subject_users', 'user_id', 'subject_id')->withTimestamps();
     }
 
     // いいねしているかどうか
