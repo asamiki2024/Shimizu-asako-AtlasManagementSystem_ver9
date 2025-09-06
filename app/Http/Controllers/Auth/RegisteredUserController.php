@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use DB;
 
-use App\Models\Users\Subjects;
-use App\Models\Users\User;
 //追加Form requestで作成したファイルをUSE宣言する。
 use App\Http\Requests\RegisterRequest;
+use App\Models\Users\Subjects;
+use App\Models\Users\User;
 
 class RegisteredUserController extends Controller
 {
@@ -37,7 +37,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
         DB::beginTransaction();
         try{
@@ -63,11 +63,16 @@ class RegisteredUserController extends Controller
                 $user = User::findOrFail($user_get->id);
                 $user->subjects()->attach($subjects);
             }
+            //追加
+            $validated = $request->validated();
+            dd($validated);
+            
             DB::commit();
             return view('auth.login.login');
         }catch(\Exception $e){
             DB::rollback();
             return redirect()->route('loginView');
+
         }
     }
 }
