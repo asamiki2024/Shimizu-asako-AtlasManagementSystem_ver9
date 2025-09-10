@@ -27,6 +27,7 @@ class RegisterRequest extends FormRequest
             //新規登録のバリデーション
             'over_name' => 'required|string|min:10',
             'under_name' => 'required|string|min:10',
+            //string=文字列の意味
             'over_name_kana' => 'required|string|katakana|min:30',
             'under_name_kana' => 'required|string|katakana|min:30',
             'mail_address' => 'required|email|min:100', Rule::unique('users', 'mail_address')->ignore(Auth::id()),
@@ -39,22 +40,32 @@ class RegisterRequest extends FormRequest
             //date=正しい日付か,after_or_equal=2000-01-01以降か,before_or_equal=今日以前かどうかチェック
             'role' => 'required|in:1,2,3,4',
             //性別と同じ番号以外無効にする。
-            'password' => 'required|min:8|max:30|alpha_num',
+            'password' => 'required|min:8|max:30|alpha_num|confirmed',
+            'password_confirmation' => 'required|min:8|max:30|alpha_num',
         ];
     }
 
     public function messages()
     {
         return[
-            'over_name' =>'',
-            'under_name' =>'',
-            'over_name_kana' =>'',
-            'under_name_kana' =>'',
-            'mail_address' =>'',
-            'sex' =>'',
-            'birth_day' =>'',
-            'role' =>'',
-            'password' =>'',
+            //入力必須
+            'over_name.required','under_name.required' =>'名前は必ず入力してください。',
+            'over_name_kana.required','under_name_kana.required' =>'フリガナは必ず入力してください。',
+            'mail_address.required' =>'メールアドレスは必ず入力してください。',
+            'sex.required' =>'性別を必ず選んでください。',
+            'birth_day.required' =>'生年月日を必ず入力してください。',
+            'role.required' =>'役職を必ず選択してください。',
+            'password.required','password_confirmation.required' =>'パスワードを必ず入力してください。',
+            //文字列
+            'over_name.string','under_name.string','over_name_kana.string','under_name_kana.string' =>'文字列で入力してください。',
+            'mail_address.email' =>'メールアドレスの形式で入力してください。',
+            //min,max
+            'over_name.min','under_name.min' =>'10文字以下で入力してください。',
+            'over_name_kana.min','under_name_kana.min' =>'30文字以下で入力してください。',
+            'mail_address.min' =>'30文字以下で入力してください。',
+            'password.min','password_confirmation.min' =>'8文字以上で入力してください。',
+            'password.max','password_confirmation.max' =>'30文字以下で入力してください。',
+
         ];
     }
 }
