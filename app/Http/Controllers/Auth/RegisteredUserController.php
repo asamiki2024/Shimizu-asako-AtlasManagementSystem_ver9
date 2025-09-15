@@ -63,10 +63,6 @@ class RegisteredUserController extends Controller
                 $user = User::findOrFail($user_get->id);
                 $user->subjects()->attach($subjects);
             }
-            //追加
-            $validated = $request->validated();
-            dd($validated);
-            
             DB::commit();
             return view('auth.login.login');
         }catch(\Exception $e){
