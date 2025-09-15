@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 //追加Form requestで作成したファイルをUSE宣言する。
 use App\Http\Requests\RegisterRequest;
+//追加
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Route;
 
 

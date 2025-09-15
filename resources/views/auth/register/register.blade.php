@@ -5,15 +5,12 @@
       <div class="w-25 vh-75 border p-3">
         <div class="register_form">
           <!-- エラーメッセージ表示 -->
-        @if($errors->any())
-        <div class="register-error">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+          @error('over_name')
+          <div class="register-error">{{ $message }}</div>
+            @enderror
+            @error('under_name')
+          <div class="register-error">{{ $message }}</div>
+            @enderror
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">姓</label>
@@ -29,15 +26,12 @@
             </div>
           </div>
           <!-- エラーメッセージ表示 -->
-        @if($errors->any())
-        <div class="register-error">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+              @error('over_name_kana')
+              <div class="register-error">{{ $message }}</div>
+                @enderror
+                @error('under_name_kana')
+              <div class="register-error">{{ $message }}</div>
+                @enderror
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">セイ</label>
@@ -53,15 +47,9 @@
             </div>
           </div>
           <!-- エラーメッセージ表示 -->
-        @if($errors->any())
-        <div class="register-error">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+              @error('mail_address')
+              <div class="register-error">{{ $message }}</div>
+                @enderror
           <div class="mt-3">
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
@@ -69,16 +57,10 @@
             </div>
           </div>
         </div>
-        <!-- エラーメッセージ表示 -->
-        @if($errors->any())
-        <div class="register-error">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+       <!-- エラーメッセージ表示 -->
+              @error('sex')
+              <div class="register-error">{{ $message }}</div>
+                @enderror
         <div class="mt-3">
           <input type="radio" name="sex" class="sex" value="1">
           <label style="font-size:13px">男性</label>
@@ -88,15 +70,9 @@
           <label style="font-size:13px">その他</label>
         </div>
         <!-- エラーメッセージ表示 -->
-        @if($errors->any())
-        <div class="register-error">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+              @error('birth_day')
+              <div class="register-error">{{ $message }}</div>
+                @enderror
         <div class="mt-3">
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
           <select class="old_year" name="old_year">
@@ -182,15 +158,9 @@
           <label style="font-size:13px">日</label>
         </div>
         <!-- エラーメッセージ表示 -->
-        @if($errors->any())
-        <div class="register-error">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+              @error('role')
+              <div class="register-error">{{ $message }}</div>
+                @enderror
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">役職</label>
           <input type="radio" name="role" class="admin_role role" value="1">
@@ -212,15 +182,9 @@
           @endforeach
         </div>
         <!-- エラーメッセージ表示 -->
-        @if($errors->any())
-        <div class="register-error">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+              @error('password')
+              <div class="register-error">{{ $message }}</div>
+                @enderror
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">パスワード</label>
           <div class="border-bottom border-primary">
@@ -228,15 +192,9 @@
           </div>
         </div>
         <!-- エラーメッセージ表示 -->
-        @if($errors->any())
-        <div class="register-error">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+              @error('password_confirmation')
+              <div class="register-error">{{ $message }}</div>
+                @enderror
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">確認用パスワード</label>
           <div class="border-bottom border-primary">

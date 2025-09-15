@@ -7,6 +7,10 @@ use App\Http\Controllers\Authenticated\Calendar\Admin\CalendarsController;
 use App\Http\Controllers\Authenticated\Calendar\General\CalendarController;
 use App\Http\Controllers\Authenticated\Top\TopsController;
 use App\Http\Controllers\Authenticated\Users\UsersController;
+//追加Form requestで作成したファイルをUSE宣言する。
+use App\Http\Requests\RegisterRequest;
+//追加
+use Illuminate\Support\Facades\Validator;
 
 
 /*

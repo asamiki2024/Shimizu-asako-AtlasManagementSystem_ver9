@@ -27,6 +27,13 @@ figure img{
   width: 80%;
 }
 
+/* 新規登録 */
+.register-error{
+  color: red;
+  font-size: 0.85em;
+  margin-bottom: 0.2%;
+}
+
 /* サイドバー */
 .sidebar {
   width: 150px;
