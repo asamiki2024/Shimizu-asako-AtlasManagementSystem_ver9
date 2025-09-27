@@ -23,8 +23,20 @@
                 <p><a href="{{ route('top.show') }}">トップ</a></p>
                 <p><a href="/logout">ログアウト</a></p>
                 <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
-                <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-                <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+            <!-- 講師アカウントのみ表示 -->
+            <!-- ifでroleの1,2,3の選択が講師、4が生徒。生徒には非表示にする。-->
+            <!-- @auth...@endauthの間はログインしているユーザーだけ表示される。 -->
+            <!-- in_array()はPHPの関数で、ある値が配列の中に含まれているか調べる処理 -->
+            <!-- Auth::user()->roleがuserテーブルの中のroleカラム(役職)の1,2,3なら(教師)trueで表示される。-->
+            <!-- それ以外は、非表示にされる -->
+            @auth
+                @if (in_array(Auth::user()->role, [1, 2, 3]))
+                <div class="teacher-only">
+                    <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
+                    <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+                </div>
+                @endif
+            @endauth
                 <p><a href="{{ route('post.show') }}">掲示板</a></p>
                 <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
             </div>
