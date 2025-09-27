@@ -52,4 +52,14 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
+    //セッションのタイムアウト(ログイン切れ)エラー
+    public function unauthenticated($request, \Illuminate\Auth\AuthenticationException $exception)
+    {
+        if ($request->expectsJson())
+        {
+            return response()->json([
+            'error' => 'not defined'], 401);
+        }
+        return response('not defined', 401);
+    }
 }
