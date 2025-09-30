@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Throwable;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+//use宣言追加
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -53,13 +55,14 @@ class Handler extends ExceptionHandler
         return parent::render($request, $exception);
     }
     //セッションのタイムアウト(ログイン切れ)エラー
-    public function unauthenticated($request, \Illuminate\Auth\AuthenticationException $exception)
+    public function unauthenticated($request, AuthenticationException $exception)
     {
-        if ($request->expectsJson())
-        {
-            return response()->json([
-            'error' => 'not defined'], 401);
-        }
-        return response('not defined', 401);
+        // if ($request->expectsJson())
+        // {
+        //     return response()->json([
+        //     'error' => 'not defined'], 401);
+        // }
+        //一旦エラー画面を出す。→2秒後にログイン画面へリダイレクト(戻る)
+        return response()->view('errors.session_timeout', [], 401);
     }
 }
