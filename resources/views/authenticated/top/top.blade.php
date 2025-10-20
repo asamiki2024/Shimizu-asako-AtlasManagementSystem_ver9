@@ -8,6 +8,17 @@
       <p>性別：@if(Auth::user()->sex == 1)<span>男</span>@else<span>女</span>@endif</p>
       <p>生年月日：<span>{{ Auth::user()->birth_day }}</span></p>
     </div>
+    <!-- ログインしていない状態でtopページに移動しようした場合の処理 -->
+     @if (!empty($timeoutError))
+      <div style="color: red; text-align: center; margin-top: 20px;">
+        {{ $timeoutError }}
+      </div>
+    <!-- 3秒後にログインページへ移動 -->
+      <script>
+            setTimeout(function(){
+                window.location.href = "{{ route('login') }}";
+            }, 3000);
+      </script>
   </div>
 </div>
 </x-sidebar>

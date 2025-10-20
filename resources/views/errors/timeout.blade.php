@@ -1,4 +1,4 @@
-{{-- resources/views/errors/timeout.blade.php --}}
+<!-- {{-- resources/views/errors/timeout.blade.php --}}
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -8,11 +8,20 @@
         <style>
             body {
                 font-family: "Hiragino Kaku Gothic ProN", sans-serif;
-                /* ボディの中身は後で記入 */
+                text-align: center;
+                color: #333; -->
+                <!-- /* ボディの中身は後で記入 */
             }
-        </style>
+            h1 {
+                color: #c00;
+            }
+            p {
+                font-size: 14px;
+                margin-top: 20px;
+            }
+        </style> -->
         <!-- 3秒後にログインページへ移動 -->
-        <script>
+        <!-- <script>
             setTimeout(function(){
                 window.location.href = "{{ route('login') }}";
             }, 3000);
@@ -22,4 +31,4 @@
         <hi>セッションがタイムアウトしました。</hi>
         <p>3秒後にログインページへ戻ります。</p>
     </body>
-</html>
+</html> -->

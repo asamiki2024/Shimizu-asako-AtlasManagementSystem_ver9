@@ -33,6 +33,10 @@ Route::group(['middleware' => 'auth'], function(){
                 ->name('logout');
             Route::get('top', [TopsController::class, 'show'])->name('top.show');
         });
+        //ログインエラーのルーティング
+        Route::get('/top', function () {
+            return view('top');
+            })->middleware('auth');
         Route::namespace('Calendar')->group(function(){
             Route::namespace('General')->group(function(){
                 Route::get('calendar/{user_id}', [CalendarController::class, 'show'])->name('calendar.general.show');
