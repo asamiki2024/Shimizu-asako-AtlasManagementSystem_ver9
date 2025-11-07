@@ -63,7 +63,7 @@ class Handler extends ExceptionHandler
         //     'error' => 'not defined'], 401);
         // }
         //一旦エラー画面を出す。→2秒後にログイン画面へリダイレクト(戻る)
-        return response()->view('top', [
+        return response()->view('authenticated.top.top', [
             'timeoutError' => 'セッションがタイムアウトしました。3秒後にログイン画面へ戻ります。'
         ], 401);
     }
