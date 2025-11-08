@@ -12,6 +12,7 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string|null
      */
+    //19行目のrouteは表示させたいURLのnameを書く。
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
