@@ -79,15 +79,15 @@ return [
     'max' => [
         'numeric' => 'The :attribute may not be greater than :max.',
         'file' => 'The :attribute may not be greater than :max kilobytes.',
-        'string' => 'The :attribute may not be greater than :max characters.',
+        'string' => ' :attribute :max文字以内で入力してください。',
         'array' => 'The :attribute may not have more than :max items.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
         'numeric' => 'The :attribute must be at least :min.',
-        'file' => 'The :attribute must be at least :min kilobytes.',
-        'string' => 'The :attribute must be at least :min characters.',
+        'file' => ' :attribute must be at least :min kilobytes.',
+        'string' => 'The :attribute :max文字以内で入力してください。',
         'array' => 'The :attribute must have at least :min items.',
     ],
     'not_in' => 'The selected :attribute is invalid.',
@@ -117,7 +117,9 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
-
+    //追加のエラーメッセージ
+    'required' => ':attributeは必ず入力してください。',
+    'string' => ':attributeは文字列である必要があります。',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -146,6 +148,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        //エラーメッセージを日本語に変換する。
+        'post_title' => 'タイトル',
+        'post_body' => '内容',
+    ],
 
 ];

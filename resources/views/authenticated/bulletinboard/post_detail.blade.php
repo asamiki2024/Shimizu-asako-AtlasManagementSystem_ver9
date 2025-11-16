@@ -3,18 +3,18 @@
   <div class="w-50 mt-5">
     <div class="m-3 detail_container">
       <div class="p-3">
+        <!-- 投稿の編集時のエラーメッセージ　タイトル -->
+        @if($errors->first('post_title'))
+          <span class="error_message">{{ $errors->first('post_title') }}</span>
+        @endif
+        <!-- 投稿の編集時のエラーメッセージ　メッセージ -->
+         @if($errors->first('post_body'))
+          <span class="error_message">{{ $errors->first('post_body') }}</span>
+        @endif
         <div class="detail_inner_head">
           <div>
           </div>
           <div>
-            <!-- 投稿の編集時のエラーメッセージ　タイトル -->
-            @if($errors->first('post_title'))
-              <span class="error_message">{{ $errors->first('post_title') }}</span>
-            @endif
-            <!-- 投稿の編集時のエラーメッセージ　メッセージ -->
-             @if($errors->first('post_body'))
-              <span class="error_message">{{ $errors->first('post_body') }}</span>
-            @endif
             <!-- ifで自分以外が編集出来ない様に設定。Auth::id()でログインしているユーザー。$post->user_idで自分以外。　===は完全一致すれば自分以外には編集機能が出ない表示になる。 -->
              @if (Auth::id()  === $post->user_id)
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
