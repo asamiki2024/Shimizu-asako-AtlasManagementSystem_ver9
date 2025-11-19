@@ -64,7 +64,7 @@ class RegisteredUserController extends Controller
                 $user->subjects()->attach($subjects);
             }
             //サイドバーのメニューの一部を教師以外非表示にする。
-            $teacherData = Model::query()
+            $teacherData = RegisteredUser::query()
             ->whereIn('role', [1, 2, 3])
             ->get();
             DB::commit();
