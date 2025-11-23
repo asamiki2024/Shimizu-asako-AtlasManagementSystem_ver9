@@ -30,7 +30,7 @@
             <!-- Auth::user()->roleがuserテーブルの中のroleカラム(役職)の1,2,3なら(教師)trueで表示される。-->
             <!-- それ以外は、非表示にされる -->
             @auth
-                @if (in_array(Auth::user()->role, [1, 2, 3]))
+                @if (Auth::check() && in_array(Auth::user()->role, [1, 2, 3]))
                 <div class="teacher-only">
                     <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
                     <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>

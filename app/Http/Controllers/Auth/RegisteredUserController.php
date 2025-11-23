@@ -63,10 +63,7 @@ class RegisteredUserController extends Controller
                 $user = User::findOrFail($user_get->id);
                 $user->subjects()->attach($subjects);
             }
-            //サイドバーのメニューの一部を教師以外非表示にする。
-            $teacherData = RegisteredUser::query()
-            ->whereIn('role', [1, 2, 3])
-            ->get();
+           
             DB::commit();
             return view('auth.login.login');
         }catch(\Exception $e){

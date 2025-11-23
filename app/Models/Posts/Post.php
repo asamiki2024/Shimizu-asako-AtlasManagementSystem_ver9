@@ -27,6 +27,12 @@ class Post extends Model
         // リレーションの定義
     }
 
+    //いいねの多対多のリレーション追記
+    public function likes(){
+        return $this->belongsToMany(User::class,'likes', 'like_user_id', 'like_post_id');
+    }
+
+
     // コメント数
     public function commentCounts($post_id){
         return Post::with('postComments')->find($post_id)->postComments();

@@ -69,6 +69,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Calendars\ReserveSettings', 'reserve_setting_users', 'user_id', 'reserve_setting_id')->withPivot('id');
     }
 
+    //いいねの多対多のリレーション追記
+    public function likedUsers(){
+        return $this->belongsToMany(Post::class,'likes', 'like_user_id', 'like_post_id');
+    }
+
     // リレーションの定義
     //多対多の「多」側
     //リレーションの記述の手順①第一引数:相手のモデル(Subjects.php),②第二引数:中間テーブル(subject_users),③第三引数:自分のID(user_id),④第四引数:相手のID(subject_id)
