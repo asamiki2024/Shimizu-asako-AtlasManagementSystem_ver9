@@ -28,7 +28,7 @@ class Post extends Model
     }
 
     //いいねの多対多のリレーション追記
-    public function likes(){
+    public function likedUsers(){
         return $this->belongsToMany(User::class,'likes', 'like_user_id', 'like_post_id');
     }
 

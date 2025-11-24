@@ -8,7 +8,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 //追加
-
+//自分で追加
+use App\Models\Posts\Post;
 
 use App\Models\Posts\Like;
 use Auth;
@@ -70,7 +71,7 @@ class User extends Authenticatable
     }
 
     //いいねの多対多のリレーション追記
-    public function likedUsers(){
+    public function likes(){
         return $this->belongsToMany(Post::class,'likes', 'like_user_id', 'like_post_id');
     }
 
@@ -83,7 +84,8 @@ class User extends Authenticatable
 
     // いいねしているかどうか
     public function is_Like($post_id){
-        return Like::where('like_user_id', Auth::id())->where('like_post_id', $post_id)->first(['likes.id']);
+        // return Like::where('like_user_id', Auth::id())->where('like_post_id', $post_id)->first(['likes.id']);
+        return $this->likes()->where('like_post_id', $post_id)->exists();
     }
 
     public function likePostId(){
