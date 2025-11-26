@@ -72,7 +72,8 @@ class User extends Authenticatable
 
     //いいねの多対多のリレーション追記
     public function likes(){
-        return $this->belongsToMany(Post::class,'likes', 'like_user_id', 'like_post_id');
+        return $this->belongsToMany(Post::class,'likes', 'like_user_id', 'like_post_id')
+            ->withTimestamps();
     }
 
     // リレーションの定義

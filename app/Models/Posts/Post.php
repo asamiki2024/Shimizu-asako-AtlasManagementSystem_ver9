@@ -4,6 +4,9 @@ namespace App\Models\Posts;
 
 use Illuminate\Database\Eloquent\Model;
 
+// 追加
+use App\Models\Users\user;
+
 class Post extends Model
 {
     const UPDATED_AT = null;
@@ -29,7 +32,8 @@ class Post extends Model
 
     //いいねの多対多のリレーション追記
     public function likedUsers(){
-        return $this->belongsToMany(User::class,'likes', 'like_user_id', 'like_post_id');
+        return $this->belongsToMany(User::class,'likes', 'like_user_id', 'like_post_id')
+            ->withTimestamps();
     }
 
 
