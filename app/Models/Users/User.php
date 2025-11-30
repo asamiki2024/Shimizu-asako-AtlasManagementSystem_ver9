@@ -72,8 +72,7 @@ class User extends Authenticatable
 
     //いいねの多対多のリレーション追記
     public function likes(){
-        return $this->belongsToMany(Post::class,'likes', 'like_user_id', 'like_post_id')
-            ->withTimestamps();
+        return $this->belongsToMany(Post::class,'likes', 'like_user_id', 'like_post_id');
     }
 
     // リレーションの定義
@@ -85,8 +84,8 @@ class User extends Authenticatable
 
     // いいねしているかどうか
     public function is_Like($post_id){
-        // return Like::where('like_user_id', Auth::id())->where('like_post_id', $post_id)->first(['likes.id']);
-        return $this->likes()->where('like_post_id', $post_id)->exists();
+        return Like::where('like_user_id', Auth::id())->where('like_post_id', $post_id)->first(['likes.id']);
+        // return $this->likes()->where('like_post_id', $post_id)->exists();
     }
 
     public function likePostId(){

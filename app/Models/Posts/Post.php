@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 // 追加
 use App\Models\Users\user;
+use App\Models\Posts\Like;
 
 class Post extends Model
 {
@@ -31,11 +32,14 @@ class Post extends Model
     }
 
     //いいねの多対多のリレーション追記
-    public function likedUsers(){
-        return $this->belongsToMany(User::class,'likes', 'like_user_id', 'like_post_id')
-            ->withTimestamps();
+    public function likeUsers(){
+        return $this->belongsToMany(User::class,'likes', 'like_post_id', 'like_user_id');
     }
 
+    //いいねの数表示
+    public function likeCount(){
+        return $this->likeUsers()->count();
+    }
 
     // コメント数
     public function commentCounts($post_id){

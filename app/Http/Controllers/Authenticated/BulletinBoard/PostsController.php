@@ -126,4 +126,21 @@ class PostsController extends Controller
 
         return response()->json();
     }
+
+    //いいね表示のAjax用返却
+    // PostControllerのlikeメゾットにJSONを返す処理
+    public function like(Request $request){
+        $user = Auth::user();
+        $post = Post::find($request->post_id);
+
+        if($user->is_Like($post->id)){
+            //いいね解除
+            $user->likes()->attach($post->id);
+            $is_liked = true;
+        }
+        return response()->json([
+            'is_liked' => $is_liked,
+            'like_count' => $post->likeCount()
+        ]);
+    }
 }

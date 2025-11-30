@@ -13,9 +13,9 @@
           </div>
           <div>
             @if(Auth::user()->is_Like($post->id))
-            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts">{{ $post->likes->count() }}</span></p>
+            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts">{{ $post->likeCount() }}</span></p>
             @else
-            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts">{{ $post->likes->count() }}</span></p>
+            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts">{{ $post->likeCount() }}</span></p>
             @endif
           </div>
         </div>
@@ -40,5 +40,8 @@
     </div>
   </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>
+  <!-- JSリンク追加 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{{ asset('js/like.js') }}"></script>
 </div>
 </x-sidebar>
