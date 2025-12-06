@@ -134,13 +134,17 @@ class PostsController extends Controller
         $post = Post::find($request->post_id);
 
         if($user->is_Like($post->id)){
-            //いいね解除
+            // いいね解除
+            $user->likes()->detach($post->id);
+            $is_liked = false;
+        } else {
+            //いいね登録
             $user->likes()->attach($post->id);
             $is_liked = true;
         }
         return response()->json([
             'is_liked' => $is_liked,
-            'like_count' => $post->likeCount()
+            'like_count' => $post->likeUsers()->content(),
         ]);
     }
 }
