@@ -100,7 +100,8 @@ class PostsController extends Controller
         $like = new Like;
         return view('authenticated.bulletinboard.post_like', compact('posts', 'like'));
     }
-
+    // いいね機能の処理
+    // いいねを付けた時に動く処理
     public function postLike(Request $request){
         $user_id = Auth::id();
         $post_id = $request->post_id;
@@ -113,7 +114,7 @@ class PostsController extends Controller
 
         return response()->json();
     }
-
+    // いいね解除する時に動く処理
     public function postUnLike(Request $request){
         $user_id = Auth::id();
         $post_id = $request->post_id;
@@ -127,24 +128,25 @@ class PostsController extends Controller
         return response()->json();
     }
 
+    // 不要だったので後ほど削除
     //いいね表示のAjax用返却
     // PostControllerのlikeメゾットにJSONを返す処理
-    public function like(Request $request){
-        $user = Auth::user();
-        $post = Post::find($request->post_id);
+    // public function like(Request $request){
+    //     $user = Auth::user();
+    //     $post = Post::find($request->post_id);
 
-        if($user->is_Like($post->id)){
-            // いいね解除
-            $user->likes()->detach($post->id);
-            $is_liked = false;
-        } else {
-            //いいね登録
-            $user->likes()->attach($post->id);
-            $is_liked = true;
-        }
-        return response()->json([
-            'is_liked' => $is_liked,
-            'like_count' => $post->likeUsers()->content(),
-        ]);
-    }
+    //     if($user->is_Like($post->id)){
+    //         // いいね解除
+    //         $user->likes()->detach($post->id);
+    //         $is_liked = false;
+    //     } else {
+    //         //いいね登録
+    //         $user->likes()->attach($post->id);
+    //         $is_liked = true;
+    //     }
+    //     return response()->json([
+    //         'is_liked' => $is_liked,
+    //         'like_count' => $post->likeUsers()->content(),
+    //     ]);
+    // }
 }

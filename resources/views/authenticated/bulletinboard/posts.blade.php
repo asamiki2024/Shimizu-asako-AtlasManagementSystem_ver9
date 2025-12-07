@@ -13,11 +13,13 @@
           </div>
           <div>
             @if(Auth::user()->is_Like($post->id))
-            <p class="m-0"><i class="fas fa-heart un_like_btn" data-post_id="{{ $post->id }}"></i><span class="like_counts">{{ $post->likeCount() }}</span></p>
+            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{ $post->likeCount() }}</span></p>
             @else
-            <p class="m-0"><i class="fas fa-heart like_btn" data-post_id="{{ $post->id }}"></i><span class="like_counts">{{ $post->likeCount() }}</span></p>
+            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{ $post->likeCount() }}</span></p>
             @endif
           </div>
+          <!-- 16行目、18行目いいね機能の処理を動かす為にspanの中に{{ $post->id }}と{{ $post->likeCount() }}を一緒に記述を書く。-->
+          <!-- 一緒に書くことでbulletin.jsの23行目の記述が処理される。いいねと人数のカウントが同時に変化する。 -->
         </div>
       </div>
     </div>
@@ -41,7 +43,7 @@
   </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>
   <!-- JSリンク追加 -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="{{ asset('js/like.js') }}"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{{ asset('js/bulletin.js') }}"></script> -->
 </div>
 </x-sidebar>
