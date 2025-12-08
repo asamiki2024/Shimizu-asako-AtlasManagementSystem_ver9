@@ -79,11 +79,16 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
+    // 投稿のコメント作成
     public function commentCreate(Request $request){
+        // 投稿のコメントのバリデーション
+        $request->validate([
+            'comment' => 'required|string|max:250'
+        ]);
         PostComment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),
-            'comment' => $request->comment
+            'comment' => $request->comment,
         ]);
         return redirect()->route('post.detail', ['id' => $request->post_id]);
     }
@@ -127,26 +132,4 @@ class PostsController extends Controller
 
         return response()->json();
     }
-
-    // 不要だったので後ほど削除
-    //いいね表示のAjax用返却
-    // PostControllerのlikeメゾットにJSONを返す処理
-    // public function like(Request $request){
-    //     $user = Auth::user();
-    //     $post = Post::find($request->post_id);
-
-    //     if($user->is_Like($post->id)){
-    //         // いいね解除
-    //         $user->likes()->detach($post->id);
-    //         $is_liked = false;
-    //     } else {
-    //         //いいね登録
-    //         $user->likes()->attach($post->id);
-    //         $is_liked = true;
-    //     }
-    //     return response()->json([
-    //         'is_liked' => $is_liked,
-    //         'like_count' => $post->likeUsers()->content(),
-    //     ]);
-    // }
 }
