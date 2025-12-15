@@ -89,7 +89,16 @@
           </div>
           <div class="selected_engineer">
             <label>選択科目</label>
-            
+            <!-- 新規ユーザー登録の記述を参考(registerブレードの177～182行目の記述参考) -->
+            @foreach($subjects as $subject)
+            <!-- 93行目　$subjectに入っている科目一覧を一件ずつ取り出して$Subjectという変数名で使えるようにする。科目の数だけ記述内に表示させる -->
+          <div class="search_subject">
+            <input type="checkbox" name="subject[]" value="{{ $subject->id }}">
+            <!-- タイプはチックボックス。 name="subject[]"value="{{ $subject->id }} はチェックした項目の配列としておくられる。国語と英語ならSubject＝[1，3]のようになる-->
+            <label>{{ $subject->subject }}</label>
+            <!-- 画面に表示する文字。選択科目の名前が表示される -->
+          </div>
+          @endforeach
           </div>
         </div>
       </div>
