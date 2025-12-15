@@ -12,14 +12,14 @@
         <span>{{ $subject->subject }}</span>
         @endforeach
       </div>
-      <div class="">
+      <div class="subject_edit">
         @can('admin')
         <span class="subject_edit_btn">選択科目の編集</span>
         <div class="subject_inner">
           <form action="{{ route('user.edit') }}" method="post">
             @foreach($subject_lists as $subject_list)
             <div>
-              <label>{{ $subject_list->subject }}</label>
+              <label>{{ $subject_list->subject }}{{ $subject->count() }}</label>
               <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
             </div>
             @endforeach
