@@ -42,8 +42,13 @@
         @endif
       </div>
       <div>
+        <!-- 一覧で生徒(4)のみ選択科目表示。教師(1.2.3)は非表示にする 46行目～51行目まで -->
         @if($user->role == 4)
-        <span>選択科目 :</span>
+          <span>選択科目 : 
+          <!-- 選択科目の表示はprofileブレードの11行目～13行目を参考 -->
+          @foreach($user->subjects as $subject)
+          </span><span>{{ $subject->subject }}</span>
+          @endforeach
         @endif
       </div>
     </div>
