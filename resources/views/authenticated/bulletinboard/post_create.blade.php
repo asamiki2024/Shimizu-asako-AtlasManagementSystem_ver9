@@ -30,7 +30,7 @@
     </div>
     <form action="{{ route('post.create') }}" method="post" id="postCreate">{{ csrf_field() }}</form>
   </div>
-  @can('admin')
+  <!-- @can('admin') -->
   <div class="w-25 ml-auto mr-auto">
     <div class="category_area mt-5 p-5">
       <div class="">
@@ -39,9 +39,12 @@
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
       </div>
       <!-- サブカテゴリー追加 -->
-      <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
+       <p class="m-0">サブカテゴリー</p>
+       <select class="w-100" form="postCreate" name="post_category_id">
+       <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
+       <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
     </div>
   </div>
-  @endcan
+  <!-- @endcan -->
 </div>
 </x-sidebar>

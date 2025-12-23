@@ -49,6 +49,10 @@ class PostsController extends Controller
     }
 
     public function postCreate(PostFormRequest $request){
+        //サブカテゴリー登録時のバリデーション　追記
+        $request->validate([
+            "post_category_id" => 'required|exists:'
+        ]);
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
