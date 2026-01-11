@@ -49,10 +49,6 @@ class PostsController extends Controller
     }
 
     public function postCreate(PostFormRequest $request){
-        //サブカテゴリー登録時のバリデーション　追記
-        $request->validate([
-            "post_category_id" => 'required|exists:'
-        ]);
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
@@ -78,8 +74,29 @@ class PostsController extends Controller
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
     }
+    //メインカテゴリー追加
     public function mainCategoryCreate(Request $request){
+        //メインカテゴリーバリデーション
+        //uniqueは、同じものを登録しない為、min_categoriesテーブルのカラムmin_category_nameを指定。
+        $request->validate([
+            'min_category' => 'required|string|max:100|unique:main_categories,min_category',
+        ]);
         MainCategory::create(['main_category' => $request->main_category_name]);
+        return redirect()->route('post.input');
+    }
+    //サブカテゴリーを追加 自分で追加
+    public function SubCategoryCreate(Request $request){
+        //サブカテゴリーのバリデーション
+        //existsは、登録されている内容と同じものか判断。sub_categoriesテーブルのカラムmain_category_idを指定。
+        //uniqueは、同じものを登録しない為、sub_categoriesテーブルのカラムsub_categoryを指定。
+        $request->validate([
+            'main_category_id' => 'required|exists:sub_categories,main_category_id',
+            'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category',
+        ]);
+        SubCategory::create([
+            'main_category_id' => Auth::id(),
+            'sub_category' => $request->sub_category_name,
+        ]);
         return redirect()->route('post.input');
     }
 
