@@ -97,6 +97,8 @@ class PostsController extends Controller
             'main_category_id' => Auth::id(),
             'sub_category' => $request->sub_category_name,
         ]);
+        //追記
+        $main = MainCategory::with('subCategories')->get();
         return redirect()->route('post.input');
     }
 
