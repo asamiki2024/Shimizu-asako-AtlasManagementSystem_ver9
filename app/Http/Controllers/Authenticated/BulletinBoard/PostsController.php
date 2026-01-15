@@ -46,6 +46,7 @@ class PostsController extends Controller
     public function postInput(){
         $main_categories = MainCategory::get();
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
+        // view('sub.category.create', compact('main_categories'));
     }
 
     public function postCreate(PostFormRequest $request){
@@ -79,12 +80,15 @@ class PostsController extends Controller
         //メインカテゴリーバリデーション
         //uniqueは、同じものを登録しない為、min_categoriesテーブルのカラムmin_category_nameを指定。
         $request->validate([
-            'min_category' => 'required|string|max:100|unique:main_categories,min_category',
+            'main_category' => 'required|string|max:100|unique:main_categories,main_category',
         ]);
-        MainCategory::create(['main_category' => $request->main_category_name]);
+        MainCategory::create([
+            'main_category' => $request->main_category_name,
+        ]);
         return redirect()->route('post.input');
     }
     //サブカテゴリーを追加 自分で追加
+    // メインカテゴリーとサブカテゴリーの紐づけ登録
     public function SubCategoryCreate(Request $request){
         //サブカテゴリーのバリデーション
         //existsは、登録されている内容と同じものか判断。sub_categoriesテーブルのカラムmain_category_idを指定。
@@ -97,11 +101,8 @@ class PostsController extends Controller
             'main_category_id' => Auth::id(),
             'sub_category' => $request->sub_category_name,
         ]);
-        //追記
-        $main = MainCategory::with('subCategories')->get();
         return redirect()->route('post.input');
     }
-
     // 投稿のコメント作成
     public function commentCreate(Request $request){
         // 投稿のコメントのバリデーション
