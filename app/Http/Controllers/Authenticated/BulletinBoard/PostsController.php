@@ -79,7 +79,7 @@ class PostsController extends Controller
     public function mainCategoryCreate(Request $request){
         //メインカテゴリーバリデーション
         //uniqueは、同じものを登録しない為、min_categoriesテーブルのカラムmin_category_nameを指定。
-        // dd($request);
+        dd($request);
         $request->validate([
             'main_category' => 'required|string|max:100|unique:main_categories,main_category',
         ]);
@@ -94,7 +94,7 @@ class PostsController extends Controller
         //サブカテゴリーのバリデーション
         //existsは、登録されている内容と同じものか判断。sub_categoriesテーブルのカラムmain_category_idを指定。
         //uniqueは、同じものを登録しない為、sub_categoriesテーブルのカラムsub_categoryを指定。
-        // dd($request);
+        dd($request);
         $validated = $request->validate([
             'main_category_id' => 'required|exists:main_categories,id',
             'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category',
