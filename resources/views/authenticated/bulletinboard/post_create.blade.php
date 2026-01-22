@@ -34,10 +34,14 @@
   <div class="w-25 ml-auto mr-auto">
     <div class="category_area mt-5 p-5">
       <div class="">
+        @if($errors->first('main_category_name'))
+          <span class="error_message">{{ $errors->first('main_category_name') }}</span>
+        @endif
         <p class="m-0">メインカテゴリー</p>
         <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}
-        <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
-        <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
+          <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
+          <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
+        </form>
       </div>
       <!-- サブカテゴリー追加 -->
        @if($errors->first('sub_category_name'))
@@ -46,7 +50,7 @@
        <p class="m-0">サブカテゴリー</p>
        <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">{{ csrf_field() }}
         <!-- メインカテゴリー登録済みをプルダウンで表示 -->
-        <select class="w-100" name="main_category_id" id="main_categories_id">
+        <select class="w-100" name="main_category_id" id="main_category_id">
           @foreach($main_categories as $main_category)
           <option label="{{ $main_category->main_category }}" value="{{ $main_category->id }}">
           </option>

@@ -153,7 +153,8 @@ return [
         'post_title' => 'タイトル',
         'post_body' => '内容',
         'comment' => 'コメント',
-        'sub_category_name' =>'サブカテゴリー'
+        'main_category_name' =>'メインカテゴリー',
+        'sub_category_name' =>'サブカテゴリー',
     ],
 
 ];
