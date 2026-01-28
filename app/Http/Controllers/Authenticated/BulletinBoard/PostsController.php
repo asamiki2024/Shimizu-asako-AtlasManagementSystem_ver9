@@ -44,17 +44,21 @@ class PostsController extends Controller
     }
 
     public function postInput(){
-        $main_categories = MainCategory::get();
+        // メインカテゴリーとサブカテゴリーをブレードに表示させる
+        $main_categories = MainCategory::with('subCategories')->orderBy('id')->get();
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
         // view('sub.category.create', compact('main_categories'));
     }
 
     public function postCreate(PostFormRequest $request){
+        // dd($request->sub_category_id);
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
+        
+        $post->subCategories()->attach($request->sub_category_id);
         return redirect()->route('post.show');
     }
 
