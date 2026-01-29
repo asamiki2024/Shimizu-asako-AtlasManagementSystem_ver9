@@ -255,6 +255,13 @@ figure img{
   cursor: pointer;
 }
 
+/* 投稿ごとのサブカテゴリー */
+.sub_category_name {
+  background-color: #03AAD2;
+  color: #FFF;
+  border-radius: 5px;
+}
+
 /* ユーザー検索 */
 .reserve_users_area {
   display: flex;
