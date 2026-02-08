@@ -32,13 +32,13 @@ class PostsController extends Controller
             // ->whereHas('subCategories', function ($q) use ($sub){
                 // $q->where('sub_category', $sub);
             ->get();
-            dd($posts);
-        }
+            // dd($posts);
+        }else{
             $posts = Post::with('user', 'postComments')
             ->whereHas('subCategories', function ($q) use ($sub){
                 $q->where('sub_category', $sub);
             })->get();
-        
+        }
             $posts = Post::with('user', 'postComments')
             ->where('post_title', 'like', '%'.$request->keyword.'%')
             ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
