@@ -10,23 +10,50 @@ use App\Models\Posts\Post;
 use App\Models\Posts\PostComment;
 use App\Models\Posts\Like;
 use App\Models\Users\User;
+
 use App\Http\Requests\BulletinBoard\PostFormRequest;
 use Auth;
 
 class PostsController extends Controller
 {
     public function show(Request $request){
-        $posts = Post::with('user', 'postComments')->get();
         $categories = MainCategory::get();
+        // 追加
+        $posts = Post::with('user', 'postComments')->get();
         $like = new Like;
         $post_comment = new Post;
         if(!empty($request->keyword)){
+            // dd($posts);
+            $sub = $request->keyword;
+            $sub_category =SubCategory::where('sub_category', $sub)->first();
+            // dd($sub_category);
+        if(($sub_category)){
+            $posts = $sub_category->post()->with('subCategories','user', 'postComments')
+            // ->whereHas('subCategories', function ($q) use ($sub){
+                // $q->where('sub_category', $sub);
+            ->get();
+            dd($posts);
+        }
+            $posts = Post::with('user', 'postComments')
+            ->whereHas('subCategories', function ($q) use ($sub){
+                $q->where('sub_category', $sub);
+            })->get();
+        
             $posts = Post::with('user', 'postComments')
             ->where('post_title', 'like', '%'.$request->keyword.'%')
             ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
         }else if($request->category_word){
             $sub_category = $request->category_word;
             $posts = Post::with('user', 'postComments')->get();
+        // 追加　サブカテゴリーでの検索(完全一致)
+        }else if(!empty($request->sub_category)){
+            $sub = $request->sub_category;
+            // dd($posts);
+            $posts = Post::with('user', 'postComments')
+            ->whereHas('subCategories', function ($q) use ($sub){
+                $q->where('sub_category', $sub);
+            })->get();
+
         }else if($request->like_posts){
             $likes = Auth::user()->likePostId()->get('like_post_id');
             $posts = Post::with('user', 'postComments')
