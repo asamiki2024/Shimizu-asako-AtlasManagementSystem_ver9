@@ -62,8 +62,21 @@ class PostsController extends Controller
             })->get();
             //whereHasは投稿が持っているsubCategoriesの中に、条件を満たすものがある投稿だけ取得するという意味。
             //$q->where('sub_category', $sub);でサブカテゴリー名が完全一致する投稿だけという意味。
-
-        }else if($request->like_posts){
+        
+            //サブカテゴリーボタンを押した時にサブカテゴリーに属する投稿のみ取得して表示。
+            }else if(!empty($request->sub_category_id)){
+            //サブカテゴリーのボタンを押した時sub_category_idが空ではないか確認している。
+            $subId = $request->sub_category_id;
+            //送られてきたIDを$subIdに代入。サブカテゴリーのIDの番号が入る。
+            $posts = Post::with('user', 'postComments', 'subCategories')
+            ->whereHas('subCategories', function($q) use ($subId){
+                $q->where('sub_categories.id', $subId);
+            })->get();
+            //71行目Postモデルをベースにクリエを作っています。with()は関連データを先に取得。
+            //user=投稿者,postComments=コメント,subCategories=投稿に紐づくサブカテゴリー
+            //72行目subCategoriesテーブルの id=$subId で絞っていますこのサブカテゴリーIDを持つ投稿だけ取得。
+            // dd($posts);
+            }else if($request->like_posts){
             $likes = Auth::user()->likePostId()->get('like_post_id');
             $posts = Post::with('user', 'postComments')
             ->whereIn('id', $likes)->get();
