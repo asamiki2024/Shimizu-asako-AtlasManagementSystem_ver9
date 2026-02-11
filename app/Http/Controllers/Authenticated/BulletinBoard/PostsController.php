@@ -18,35 +18,50 @@ class PostsController extends Controller
 {
     public function show(Request $request){
         $categories = MainCategory::get();
-        // 追加
+        // 追加記述　サブカテゴリーとキーワードが完全一致するときの条件分岐
         $posts = Post::with('user', 'postComments')->get();
+        //$postsに投稿(post)を全部取得する。user=投稿者,postComments=投稿のコメント
         $like = new Like;
         $post_comment = new Post;
+        // 追加記述
         if(!empty($request->keyword)){
+        //リクエストにkeywordが入っている時だけ検索処理をする。emptyは空、nullなどを弾くので反応しない。
             // dd($posts);
             $sub = $request->keyword;
+            //入力したキーワードを$subに入れている。
             $sub_category =SubCategory::where('sub_category', $sub)->first();
+            //sub_categoriesテーブルからsub_categoryカラムがキーワードと完全一致するものを探して
+            // first()で最初の1件だけ取得している。見つからない場合はnullで何も出てこない。
             // dd($sub_category);
             if(($sub_category)){
+            //サブカテゴリーが見つかった場合の分岐
                 $posts = $sub_category->post()->with('subCategories','user', 'postComments')
                 ->get();
-            // dd($posts);
+                //$sub_category->post()はSubCategoryモデルに定義したリレーションを使ってサブカテゴリーに紐づく投稿一覧のクエリを作っている。
+                //->with('subCategories','user', 'postComments')->get();は投稿を表示する時に必要なもの(サブカテゴリー名、投稿者、コメント)をまとめて読み込んでいる。
+                // dd($posts);
                 }else{
+                //サブカテゴリーが見つからなかった場合、入力したキーワードとサブカテゴリーが一致しなかった場合は普通のキーワード検索に切り替えしている。
                     $posts = Post::with('user', 'postComments')
                     ->where('post_title', 'like', '%'.$request->keyword.'%')
                     ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
+                    //post_title(タイトル)に部分一致,post(投稿内容)に部分一致した時は表示する処理。
             }
         }else if($request->category_word){
+        //category_wordが入っていいる時の分岐。完全一致でもタイトル、投稿内容以外での検索の条件分岐
             $sub_category = $request->category_word;
             $posts = Post::with('user', 'postComments')->get();
         // 追加　サブカテゴリーでの検索(完全一致)
         }else if(!empty($request->sub_category)){
             $sub = $request->sub_category;
+            //ここではkeywordではなくsub_categoryという別のinputで来た時に動く処理。
             // dd($posts);
             $posts = Post::with('user', 'postComments')
             ->whereHas('subCategories', function ($q) use ($sub){
                 $q->where('sub_category', $sub);
             })->get();
+            //whereHasは投稿が持っているsubCategoriesの中に、条件を満たすものがある投稿だけ取得するという意味。
+            //$q->where('sub_category', $sub);でサブカテゴリー名が完全一致する投稿だけという意味。
 
         }else if($request->like_posts){
             $likes = Auth::user()->likePostId()->get('like_post_id');
