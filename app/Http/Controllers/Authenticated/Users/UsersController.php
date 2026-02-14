@@ -20,10 +20,23 @@ class UsersController extends Controller
         $updown = $request->updown;
         $gender = $request->sex;
         $role = $request->role;
-        $subjects = null;// ここで検索時の科目を受け取る
+        $subjects = null;
+        // 選択科目でユーザー検索
+        $subjectIDs = $request->input('subject',[]);
+        // name="subject[]"が中に入る。
+        $query = User::query()->with('subjects');
+        // 選択科目で絞り込み　どれか1つでも一致
+        if(!empty($subjectIDs)){
+            $query->whereHas('subjects', function ($q) use ($subjectIDs){
+                $q->whereIn('subjects.id', $subjectIDs);
+            });
+        }
+
         $userFactory = new SearchResultFactories();
-        $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
+        $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIDs);
         $subjects = Subjects::all();
+        // $users = $query->get();
+        // dd($subjectIDs, $query->toSql(), $query->getBindings());
         return view('authenticated.users.search', compact('users', 'subjects'));
     }
 
