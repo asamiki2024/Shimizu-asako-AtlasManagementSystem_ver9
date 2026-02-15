@@ -23,19 +23,27 @@ class UsersController extends Controller
         $subjects = null;
         // 選択科目でユーザー検索
         $subjectIDs = $request->input('subject',[]);
+        // dd($request->all());
         // name="subject[]"が中に入る。
         $query = User::query()->with('subjects');
         // 選択科目で絞り込み　どれか1つでも一致
-        if(!empty($subjectIDs)){
-            $query->whereHas('subjects', function ($q) use ($subjectIDs){
-                $q->whereIn('subjects.id', $subjectIDs);
-            });
-        }
+        // if(!empty($subjectIDs)){
+        //     // dd($subjectIDs);
+        //     $query->whereHas('subjects', function ($q) use ($subjectIDs){
+        //         $q->whereIn('subjects.id', $subjectIDs);
+        //         // dd($query);
+        //     });
+        //     // dd([
+        //     //     'sql' => $query->toSql(),
+        //     //     'bindings' => $query->getBindings(),
+        //     // ]);
+        //     }
+    
 
         $userFactory = new SearchResultFactories();
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIDs);
         $subjects = Subjects::all();
-        // $users = $query->get();
+        $users = $query->get();
         // dd($subjectIDs, $query->toSql(), $query->getBindings());
         return view('authenticated.users.search', compact('users', 'subjects'));
     }

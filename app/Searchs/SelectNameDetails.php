@@ -6,7 +6,7 @@ use App\Models\Users\User;
 class SelectNameDetails implements DisplayUsers{
 
   // 改修課題：選択科目の検索機能
-  public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects){
+  public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects,$subjectIDs){
     if(is_null($gender)){
       $gender = ['1', '2', '3'];
     }else{
@@ -17,6 +17,24 @@ class SelectNameDetails implements DisplayUsers{
     }else{
       $role = array($role);
     }
+    // 追記
+    // $subjectIDs = $request->input('subject',[]);
+        // name="subject[]"が中に入る。
+        $query = User::query()->with('subjects');
+    if(!empty($subjectIDs)){
+          $query->whereHas('subjects', function ($q) use ($subjectIDs){
+            $q->whereIn('subjects.id', $subjectIDs);
+      });
+    }
+    if(!empty($keyword)){
+        $query->where(function($q) use ($keyword){
+          $q->where('over_name', 'like', '%'.$keyword.'%')
+          ->orWhere('under_name', 'like', '%'.$keyword.'%')
+          ->orWhere('over_name_kana', 'like', '%'.$keyword.'%')
+          ->orWhere('under_name_kana', 'like', '%'.$keyword.'%');
+        });
+    }
+
     $users = User::with('subjects')
     ->where(function($q) use ($keyword){
       $q->Where('over_name', 'like', '%'.$keyword.'%')
