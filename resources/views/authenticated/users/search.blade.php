@@ -3,7 +3,7 @@
 <div class="search_content w-100 border d-flex">
   <div class="reserve_users_area">
     @foreach($users as $user)
-    <div class="border one_person">
+    <di"v class="border one_person">
       <div>
         <span>ID : </span><span>{{ $user->id }}</span>
       </div>
@@ -103,7 +103,7 @@
             <label>{{ $subject->subject }}</label>
             <!-- 画面に表示する文字。選択科目の名前が表示される -->
           </div>
-          @endforeach
+            @endforeach
           </div>
         </div>
       </div>

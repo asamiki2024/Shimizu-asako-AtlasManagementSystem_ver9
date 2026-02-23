@@ -25,21 +25,39 @@ class SearchResultFactories{
       // 追記
       // $subjectIDs = $request->input('subject',[]);
         // name="subject[]"が中に入る。
-        $query = User::query()->with('subjects');
+    //     $query = User::query()->with('subjects');
+    // if(!empty($subjectIDs)){
+    //         $query->whereHas('subjects', function ($q) use ($subjectIDs){
+    //             $q->whereIn('subjects.id', $subjectIDs);
+    //         });
+    //   }
+    $userQuery = User::with('subjects');
     if(!empty($subjectIDs)){
-            $query->whereHas('subjects', function ($q) use ($subjectIDs){
-                $q->whereIn('subjects.id', $subjectIDs);
-            });
-      }
+          $uerQuery->whereHas('subjects', function ($q) use ($subjectIDs){
+            $q->whereIn('subjects.id', $subjectIDs);
+      });
+    }
 
     if(!empty($keyword)){
-        $query->where(function($q) use ($keyword){
-          $q->where('over_name', 'like', '%'.$keyword.'%')
-          ->orWhere('under_name', 'like', '%'.$keyword.'%')
-          ->orWhere('over_name_kana', 'like', '%'.$keyword.'%')
-          ->orWhere('under_name_kana', 'like', '%'.$keyword.'%');
+        $userQuery->where(function($q) use ($keyword){
+          $q->where('over_name', 'like', "%{$keyword}%")
+          ->orWhere('under_name', 'like', "%{$keyword}%")
+          ->orWhere('over_name_kana', 'like', "%{$keyword}%")
+          ->orWhere('under_name_kana', 'like', "%{$keyword}%");
         });
     }
+
+
+
+
+    // if(!empty($keyword)){
+    //     $query->where(function($q) use ($keyword){
+    //       $q->where('over_name', 'like', '%'.$keyword.'%')
+    //       ->orWhere('under_name', 'like', '%'.$keyword.'%')
+    //       ->orWhere('over_name_kana', 'like', '%'.$keyword.'%')
+    //       ->orWhere('under_name_kana', 'like', '%'.$keyword.'%');
+    //     });
+    // }
       $allUsers = new AllUsers();
     return $allUsers->resultUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIDs);
     }
