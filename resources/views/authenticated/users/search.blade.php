@@ -3,7 +3,7 @@
 <div class="search_content w-100 border d-flex">
   <div class="reserve_users_area">
     @foreach($users as $user)
-    <di"v class="border one_person">
+    <div class="border one_person">
       <div>
         <span>ID : </span><span>{{ $user->id }}</span>
       </div>
@@ -82,7 +82,7 @@
             <span>女</span><input type="radio" name="sex" value="2" form="userSearchRequest">
             <span>その他</span><input type="radio" name="sex" value="3" form="userSearchRequest">
           </div>
-          <div>
+        <div>
             <label>権限</label>
             <select name="role" form="userSearchRequest" class="engineer">
               <option selected disabled>----</option>
@@ -97,15 +97,15 @@
             <!-- 新規ユーザー登録の記述を参考(registerブレードの177～182行目の記述参考) -->
             @foreach($subjects as $subject)
             <!-- 93行目　$subjectに入っている科目一覧を一件ずつ取り出して$Subjectという変数名で使えるようにする。科目の数だけ記述内に表示させる -->
-          <div class="search_subject">
-            <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
+              <div class="search_subject">
+                <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
             <!-- タイプはチックボックス。 name="subject[]"value="{{ $subject->id }} はチェックした項目の配列としておくられる。国語と英語ならSubject＝[1，3]のようになる-->
-            <label>{{ $subject->subject }}</label>
+                <label>{{ $subject->subject }}</label>
             <!-- 画面に表示する文字。選択科目の名前が表示される -->
-          </div>
+              </div>
             @endforeach
           </div>
-        </div>
+      </div>
       </div>
       <div>
         <input type="reset" value="リセット" form="userSearchRequest">

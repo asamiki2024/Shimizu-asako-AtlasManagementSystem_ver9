@@ -32,30 +32,30 @@ class SelectIdDetails implements DisplayUsers{
     //         });
     // }
 
-    // if(!empty($keyword)){
-    //     $query->where(function($q) use ($keyword){
-    //       $q->where('over_name', 'like', '%'.$keyword.'%')
-    //       ->orWhere('under_name', 'like', '%'.$keyword.'%')
-    //       ->orWhere('over_name_kana', 'like', '%'.$keyword.'%')
-    //       ->orWhere('under_name_kana', 'like', '%'.$keyword.'%');
-    //     });
-    // }
-
-    $userQuery = User::with('subjects');
-    if(!empty($subjectIDs)){
-          $uerQuery->whereHas('subjects', function ($q) use ($subjectIDs){
-            $q->whereIn('subjects.id', $subjectIDs);
-      });
-    }
-
     if(!empty($keyword)){
-        $userQuery->where(function($q) use ($keyword){
-          $q->where('over_name', 'like', "%{$keyword}%")
-          ->orWhere('under_name', 'like', "%{$keyword}%")
-          ->orWhere('over_name_kana', 'like', "%{$keyword}%")
-          ->orWhere('under_name_kana', 'like', "%{$keyword}%");
+        $query->where(function($q) use ($keyword){
+          $q->where('over_name', 'like', '%'.$keyword.'%')
+          ->orWhere('under_name', 'like', '%'.$keyword.'%')
+          ->orWhere('over_name_kana', 'like', '%'.$keyword.'%')
+          ->orWhere('under_name_kana', 'like', '%'.$keyword.'%');
         });
     }
+
+    // $Query = User::with('subjects');
+    // if(!empty($subjectIDs)){
+    //       $Query->whereHas('subjects', function ($q) use ($subjectIDs){
+    //         $q->whereIn('subjects.id', $subjectIDs);
+    //   });
+    // }
+
+    // if(!empty($keyword)){
+    //     $userQuery->where(function($q) use ($keyword){
+    //       $q->where('over_name', 'like', "%{$keyword}%")
+    //       ->orWhere('under_name', 'like', "%{$keyword}%")
+    //       ->orWhere('over_name_kana', 'like', "%{$keyword}%")
+    //       ->orWhere('under_name_kana', 'like', "%{$keyword}%");
+    //     });
+    // }
 
     $users = User::with('subjects')
     ->whereIn('id', $keyword)
@@ -63,8 +63,8 @@ class SelectIdDetails implements DisplayUsers{
       $q->whereIn('sex', $gender)
       ->whereIn('role', $role);
     })
-    ->whereHas('subjects', function($q) use ($subjects){
-      $q->where('subjects.id', $subjects);
+    ->whereHas('subjects', function($q) use ($subjectIDs){
+      $q->whereIn('subjects.id', $subjectIDs);
     })
     ->orderBy('id', $updown)->get();
     return $users;

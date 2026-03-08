@@ -23,27 +23,27 @@ class UsersController extends Controller
         $subjects = null;
         // 選択科目でユーザー検索
         $subjectIDs = $request->input('subject',[]);
-        // dd($request->all());
+        // dd($request);
         // name="subject[]"が中に入る。
-        $userQuery = User::query()->with('subjects');
+        // $Query = User::query()->with('subjects');
         // 選択科目で絞り込み　どれか1つでも一致
         // if(!empty($subjectIDs)){
-        //     // dd($subjectIDs);
-        //     $query->whereHas('subjects', function ($q) use ($subjectIDs){
-        //         $q->whereIn('subjects.id', $subjectIDs);
-        //         // dd($query);
-        //     });
-        //     // dd([
-        //     //     'sql' => $query->toSql(),
-        //     //     'bindings' => $query->getBindings(),
-        //     // ]);
-        //     }
-    
-
-        $userFactory = new SearchResultFactories();
-        $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIDs);
-        $subjects = Subjects::all();
-        $users = $userQuery->get();
+            //     // dd($subjectIDs);
+            //     $Query->whereHas('subjects', function ($q) use ($subjectIDs){
+                //         $q->whereIn('subjects.id', $subjectIDs);
+                //         // dd($query);
+                //     });
+                //     // dd([
+                    //     //     'sql' => $query->toSql(),
+                    //     //     'bindings' => $query->getBindings(),
+                    // ]);
+                    // }
+                    
+                    
+                    $userFactory = new SearchResultFactories();
+                    $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects,$subjectIDs);
+                    $subjects = Subjects::all();
+                    // $users = $Query->get();
         // dd($subjectIDs, $query->toSql(), $query->getBindings());
         return view('authenticated.users.search', compact('users', 'subjects'));
     }

@@ -35,12 +35,12 @@ class SelectNames implements DisplayUsers{
     //     });
     // }
 
-    $userQuery = User::with('subjects');
-    if(!empty($subjectIDs)){
-          $uerQuery->whereHas('subjects', function ($q) use ($subjectIDs){
-            $q->whereIn('subjects.id', $subjectIDs);
-      });
-    }
+    // $Query = User::with('subjects');
+    // if(!empty($subjectIDs)){
+    //       $Query->whereHas('subjects', function ($q) use ($subjectIDs){
+    //         $q->whereIn('subjects.id', $subjectIDs);
+    //   });
+    // }
 
     // if(!empty($keyword)){
     //     $userQuery->where(function($q) use ($keyword){

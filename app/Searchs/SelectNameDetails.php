@@ -6,7 +6,7 @@ use App\Models\Users\User;
 class SelectNameDetails implements DisplayUsers{
 
   // 改修課題：選択科目の検索機能
-  public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects,$subjectIDs){
+  public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIDs){
     if(is_null($gender)){
       $gender = ['1', '2', '3'];
     }else{
@@ -21,12 +21,12 @@ class SelectNameDetails implements DisplayUsers{
     // $subjectIDs = $request->input('subject',[]);
         // name="subject[]"が中に入る。
         // $query = User::query()->with('subjects');
-    $userQuery = User::with('subjects');
-    if(!empty($subjectIDs)){
-          $uerQuery->whereHas('subjects', function ($q) use ($subjectIDs){
-            $q->whereIn('subjects.id', $subjectIDs);
-      });
-    }
+    // $Query = User::with('subjects');
+    // if(!empty($subjectIDs)){
+    //       $Query->whereHas('subjects', function ($q) use ($subjectIDs){
+    //         $q->whereIn('subjects.id', $subjectIDs);
+    //   });
+    // }
 
     // if(!empty($keyword)){
     //     $userQuery->where(function($q) use ($keyword){
@@ -48,8 +48,8 @@ class SelectNameDetails implements DisplayUsers{
       $q->whereIn('sex', $gender)
       ->whereIn('role', $role);
     })
-    ->whereHas('subjects', function($q) use ($subjects){
-      $q->where('subjects.id', $subjects);
+    ->whereHas('subjects', function($q) use ($subjectIDs){
+      $q->whereIn('subjects.id', $subjectIDs);
     })
     ->orderBy('over_name_kana', $updown)->get();
     return $users;
