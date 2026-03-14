@@ -28,7 +28,7 @@ class UsersController extends Controller
         // $Query = User::query()->with('subjects');
         // 選択科目で絞り込み　どれか1つでも一致
         // if(!empty($subjectIDs)){
-            //     // dd($subjectIDs);
+                // dd($subjectIDs);
             //     $Query->whereHas('subjects', function ($q) use ($subjectIDs){
                 //         $q->whereIn('subjects.id', $subjectIDs);
                 //         // dd($query);
