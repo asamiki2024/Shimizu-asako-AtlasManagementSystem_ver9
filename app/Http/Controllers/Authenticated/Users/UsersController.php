@@ -22,7 +22,7 @@ class UsersController extends Controller
         $role = $request->role;
         $subjects = null;
         // 選択科目でユーザー検索
-        $subjectIDs = $request->input('subject',[]);
+        $subjectIds = $request->input('subject',[]);
         // dd($request);
         // name="subject[]"が中に入る。
         // $Query = User::query()->with('subjects');
@@ -41,7 +41,7 @@ class UsersController extends Controller
                     
                     
                     $userFactory = new SearchResultFactories();
-                    $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects,$subjectIDs);
+                    $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIds);
                     $subjects = Subjects::all();
                     // $users = $Query->get();
         // dd($subjectIDs, $query->toSql(), $query->getBindings());

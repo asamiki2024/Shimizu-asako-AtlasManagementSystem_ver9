@@ -6,24 +6,28 @@ use App\Models\Users\User;
 class SearchResultFactories{
 
   // 改修課題：選択科目の検索機能
-  public function initializeUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIDs){
+  public function initializeUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIds){
     if($category == 'name'){
-      if(empty($subjectIDs)){
+      if(empty($subjectIds)){
         $searchResults = new SelectNames();
       }else{
         $searchResults = new SelectNameDetails();
       }
-      return $searchResults->resultUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIDs);
+      return $searchResults->resultUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIds);
     }else if($category == 'id'){
-      if(empty($subjectIDs)){
+      if(empty($subjectIds)){
         $searchResults = new SelectIds();
       }else{
         $searchResults = new SelectIdDetails();
       }
-      return $searchResults->resultUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIDs);
+      return $searchResults->resultUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIds);
     }else{
-      // emptyは空の意味がある。中身が選択させていない空っぽの状態なら全てのユーザーを表示させる。
       // 追記
+      // emptyは空の意味がある。中身が選択させていない空っぽの状態なら全てのユーザーを表示させる。
+      // 10行目～15行目　カテゴリーの中に選択科目の名前が入っていたら絞り込みをして表示。
+      // 16行目～23行目までidで選択科目のidと同じものがあれば絞り込みをして表示。
+
+      // 以下使用しなかったもの
       // $subjectIDs = $request->input('subject',[]);
         // name="subject[]"が中に入る。
     //     $query = User::query()->with('subjects');
@@ -60,7 +64,7 @@ class SearchResultFactories{
     //     });
     // }
       $allUsers = new AllUsers();
-    return $allUsers->resultUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIDs);
+    return $allUsers->resultUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIds);
     }
   }
 }

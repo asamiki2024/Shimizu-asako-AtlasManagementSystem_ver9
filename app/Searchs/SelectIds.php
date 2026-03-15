@@ -6,7 +6,7 @@ use App\Models\Users\User;
 class SelectIds implements DisplayUsers{
 
   // 改修課題：選択科目の検索機能
-  public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIDs){
+  public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIds){
     if(is_null($gender)){
       $gender = ['1', '2', '3'];
     }else{

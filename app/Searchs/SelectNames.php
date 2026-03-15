@@ -5,7 +5,7 @@ use App\Models\Users\User;
 
 class SelectNames implements DisplayUsers{
 
-  public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIDs){
+  public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects, $subjectIds){
     if(empty($gender)){
       $gender = ['1', '2', '3'];
     }else{
