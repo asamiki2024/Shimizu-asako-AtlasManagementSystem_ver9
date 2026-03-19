@@ -36,7 +36,7 @@ figure img{
 
 /* サイドバー */
 .sidebar {
-  width: 150px;
+  width: 200px;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
@@ -50,6 +50,10 @@ figure img{
   color: #FFF;
 }
 
+/* サイドバーアイコンの大きさ */
+.sidebar img {
+  width: 20%;
+}
 /* トップページ */
 .user_status {
   border-radius: 10px;
