@@ -28,7 +28,7 @@ class CalendarWeekDay{
     $one_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '1')->first();
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
-
+// ここに予約人数を表示させるIF文を記入。
     $html[] = '<div class="text-left">';
     if($one_part){
       $html[] = '<p class="day_part m-0 pt-1">1部</p>';
