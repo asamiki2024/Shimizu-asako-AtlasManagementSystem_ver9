@@ -28,15 +28,17 @@ class CalendarWeekDay{
     $one_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '1')->first();
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
-    // ここに予約人数を表示させるIF文を記入。
+    // 予約確認画面のページ
+    // ここに予約人数を表示させるcountを記入。
+    // 部数にリンクを付ける。リンク先は予約詳細画面
     if($one_part){
-      $html[] = '<p class="day_part m-0 pt-1">1部' . $one_part->users->count() . '</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="">1部</a>' . $one_part->users->count() . '</p>';
     }
     if($two_part){
-      $html[] = '<p class="day_part m-0 pt-1">2部' . $two_part->users->count() . '</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="">2部</a>' . $two_part->users->count() . '</p>';
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1">3部' . $three_part->users->count() . '</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="">3部</a>' . $three_part->users->count() . '</p>';
     }
     $html[] = '</div>';
 
