@@ -153,8 +153,21 @@ figure img{
   border-radius: 10px;
 }
 
+/* いいねボタン・コメントアイコンの色、太さ */
+.post_area p{
+  color: gray;
+  font-weight: bolder;
+}
+
+.post_area p a{
+  color: black;
+  font-weight: 900;
+}
+
+/* ボタンの右寄せ */
 .post_bottom_area {
   justify-content: space-between;
+  margin-left: 83%;
 }
 
 .like_btn,

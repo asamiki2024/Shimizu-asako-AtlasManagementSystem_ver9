@@ -31,6 +31,7 @@ class CalendarWeekDay{
     // 予約確認画面のページ
     // ここに予約人数を表示させるcountを記入。
     // 部数にリンクを付ける。リンク先は予約詳細画面web.phpからcalendar.admin.detailのルートを使用。phpのファイルの為、{{}}は使用しない。
+    // partの部分は何部なのかを表示させる為に1,2,3に修正。
     if($one_part){
       $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 1]) . '">1部</a>' . $one_part->users->count() . '</p>';
     }
