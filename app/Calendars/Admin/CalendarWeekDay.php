@@ -32,13 +32,13 @@ class CalendarWeekDay{
     // ここに予約人数を表示させるcountを記入。
     // 部数にリンクを付ける。リンク先は予約詳細画面web.phpからcalendar.admin.detailのルートを使用。phpのファイルの為、{{}}は使用しない。
     if($one_part){
-      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => $one_part]) . '">1部</a>' . $one_part->users->count() . '</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 1]) . '">1部</a>' . $one_part->users->count() . '</p>';
     }
     if($two_part){
-      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => $two_part]) . '">2部</a>' . $two_part->users->count() . '</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 2]) . '">2部</a>' . $two_part->users->count() . '</p>';
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => $three_part]) . '">3部</a>' . $three_part->users->count() . '</p>';
+      $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 3]) . '">3部</a>' . $three_part->users->count() . '</p>';
     }
     $html[] = '</div>';
 
