@@ -3,7 +3,8 @@
   <div class="vh-100 d-flex" style="align-items:center; justify-content:center;">
     
     <div class="w-50 m-auto h-75">
-      <p><span>{{ $date }}日</span><span class="ml-3">{{ $part }}部</span></p>
+      <!-- Carbonをバックスラッシュで直接書き出しcarbonを使用出来るようにする。＄dateの日付をフォーマットに直して表示させる。 -->
+      <p><span>{{ \Carbon\Carbon::parse($date)->format('Y年n月j日') }}</span><span class="ml-3">{{ $part }}部</span></p>
       <div class="h-75 border">
         <table class="">
           <tr class="text-center">
