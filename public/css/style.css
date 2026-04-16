@@ -153,6 +153,14 @@ figure img{
   border-radius: 10px;
 }
 
+.post_btn {
+  border-radius: 5px;
+  padding: 0 5px;
+  border: none;
+  background: #03AAD2;
+  color: #FFF;
+}
+
 /* いいねボタン・コメントアイコンの色、太さ */
 .post_area p{
   color: gray;

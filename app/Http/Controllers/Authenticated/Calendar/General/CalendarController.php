@@ -15,7 +15,9 @@ class CalendarController extends Controller
 {
     public function show(){
         $calendar = new CalendarView(time());
-        return view('authenticated.calendar.general.calendar', compact('calendar'));
+        // キャンセル画面のモーダルで予約日時と部数のデータを表示させる為の変数
+        $settings =ReserveSettings::with('users')->get();
+        return view('authenticated.calendar.general.calendar', compact('calendar','settings'));
     }
 
     public function reserve(Request $request){
@@ -34,5 +36,12 @@ class CalendarController extends Controller
             DB::rollback();
         }
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
+    }
+
+     // 予約キャンセル
+    public function delete($reserve_setting_id){
+        $reserve_setting = reserve_settings::with('user', 'reserve_setting_users')->findOrFail($reserve_setting_id);
+        $reserve_setting->delete();
+        return redirect()->route('calender.show');
     }
 }

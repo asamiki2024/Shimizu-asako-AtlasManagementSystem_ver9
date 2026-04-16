@@ -1,5 +1,5 @@
 <x-sidebar>
-  @foreach($settings as $setting)
+ 
 <div class="vh-100 pt-5" style="background:#ECF1F6;">
   <div class="border w-75 m-auto pt-5 pb-5" style="border-radius:5px; background:#FFF;">
     <div class="w-75 m-auto border" style="border-radius:5px;">
@@ -17,20 +17,21 @@
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
       <form action="{{ route('deleteParts') }}" method="post">
-        @csrf
+         @foreach($settings as $setting)
         <div class="w-100">
           <div class="modal-inner w-50 m-auto">
             <p>予約日：{{ $setting->setting_reserve }}</p>
             <p>時間：リモート{{ $setting->setting_part }}</p>
             <p>上記の予約をキャンセルしてもよろしいですか？</p>
           </div>
-        <div class="w-50 m-auto edit-modal-btn d-flex">
-          <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
-          <input type="hidden" class="edit-modal-hidden" name="reserve_setting_id" value="{{ $setting->id }}">
-          <input type="submit" class="btn btn-primary d-block" value="キャンセル">
+          <div class="w-50 m-auto edit-modal-btn d-flex">
+            <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
+            <input type="hidden" class="edit-modal-hidden" name="reserve_setting_id" value="{{ $setting->id }}">
+            <input type="submit" class="btn btn-primary d-block" value="キャンセル">
+          </div>
         </div>
+        @endforeach
     </div>
-  </div>
 </div>
-@endforeach
+
 </x-sidebar>
