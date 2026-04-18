@@ -158,9 +158,28 @@ figure img{
   padding: 0 5px;
   border: none;
   background: #03AAD2;
+  text-align: center;
+}
+
+.post_btn a {
   color: #FFF;
 }
 
+.post_search {
+  display: flex;
+  border-radius: 5px;
+}
+
+.post_keyword {
+  width: 80%;
+}
+
+.post_search_btn {
+  background: #03AAD2;
+  width: 30%;
+  border: none;
+  color: #FFF;
+}
 /* いいねボタン・コメントアイコンの色、太さ */
 .post_area p{
   color: gray;

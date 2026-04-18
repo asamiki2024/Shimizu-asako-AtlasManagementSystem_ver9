@@ -1,16 +1,16 @@
 $(function(){
 $('.edit-modal-open').on('click',function(){
-    $('.js-modal').fadeIn();
-    var post_title = $(this).attr('post_title');
-    var post_body = $(this).attr('post_body');
-    var post_id = $(this).attr('post_id');
-    $('.modal-inner-title input').val(post_title);
-    $('.modal-inner-body textarea').text(post_body);
-    $('.edit-modal-hidden').val(post_id);
+    $('.calender_js-modal').fadeIn();
+    var setting_reserve = $(this).attr('setting_reserve');
+    var setting_part = $(this).attr('setting_part');
+    var reserve_setting_id = $(this).attr('reserve_setting_id');
+    $('.modal-inner-setting_reserve').val(setting_reserve);
+    $('.modal-inner-setting_part').text(setting_part);
+    $('.edit-modal-hidden_calender').val(reserve_setting_id);
     return false;
   });
-  $('.js-modal-close').on('click', function () {
-    $('.js-modal').fadeOut();
+  $('.calender_js-modal-close').on('click', function () {
+    $('.calender_js-modal').fadeOut();
     return false;
   });
 
