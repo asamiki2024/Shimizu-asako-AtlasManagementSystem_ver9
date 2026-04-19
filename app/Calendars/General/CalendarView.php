@@ -37,6 +37,9 @@ class CalendarView{
 
       $days = $week->getDays();
       foreach($days as $day){
+        // 追加
+        $date = $day->getDate();
+
         $startDay = $this->carbon->copy()->format("Y-m-01");
         $toDay = $this->carbon->copy()->format("Y-m-d");
 
@@ -60,7 +63,8 @@ class CalendarView{
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
-            $html[] = '<button type="button" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" date="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
+            // dd($date);
+            $html[] = '<button type="button" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" data-date="' . $date . '" data-part="' . $reservePart .'">'. $reservePart .'</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         }else{
