@@ -37,8 +37,8 @@ class CalendarView{
 
       $days = $week->getDays();
       foreach($days as $day){
-        // 追加
-        $date = $day->getDate();
+        // 追加 予約したボタンに送る日付のデータ
+        $date = $day->everyDay();
 
         $startDay = $this->carbon->copy()->format("Y-m-01");
         $toDay = $this->carbon->copy()->format("Y-m-d");

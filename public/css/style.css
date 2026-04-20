@@ -172,10 +172,16 @@ figure img{
 
 .post_keyword {
   width: 80%;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  background-color: #ECF1F6;
+  border: #dee2e6;
 }
 
 .post_search_btn {
   background: #03AAD2;
+  border-left: none;
+  border-radius:  0 5px 5px 0;
   width: 30%;
   border: none;
   color: #FFF;
