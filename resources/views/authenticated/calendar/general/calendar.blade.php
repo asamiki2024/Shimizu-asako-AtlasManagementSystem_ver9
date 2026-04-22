@@ -20,8 +20,8 @@
          @foreach($settings as $setting)
         <div class="w-100">
           <div class="modal-inner w-50 m-auto">
-            <p class="modal-inner-setting_reserve">予約日：{{ $setting->setting_reserve }}</p>
-            <p class="modal-inner-setting_part">時間：リモート{{ $setting->setting_part }}</p>
+            <p class="data-date">予約日：{{ $setting->date }}</p>
+            <p class="data-part">時間：リモート{{ $setting->reservePart }}</p>
             <p>上記の予約をキャンセルしてもよろしいですか？</p>
           </div>
           <div class="w-50 m-auto edit-modal-btn d-flex">

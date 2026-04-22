@@ -64,7 +64,7 @@ class CalendarView{
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
             // dd($date);
-            $html[] = '<button type="button" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" data-date="' . $date . '" data-part="' . $reservePart .'">'. $reservePart .'</button>';
+            $html[] = '<button type="button" class="btn btn-danger p-0 w-75 calender_js-modal-open" name="delete_date" style="font-size:12px" data-date="' . $date . '" data-part="' . $reservePart .'">'. $reservePart .'</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         }else{
