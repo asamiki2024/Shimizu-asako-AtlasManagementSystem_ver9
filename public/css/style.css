@@ -111,13 +111,24 @@ figure img{
   width: 100%;
 }
 
-.modal__bg {
+/* スクール予約ページ キャンセルモーダル */
+.modal-calender {
+  left: 55%;
+  padding: 40px;
+  position: absolute;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  border: 10px solid black;
+}
+/* .modal__bg {
   background: rgba(0, 0, 0, 0.8);
   height: 100vh;
   position: absolute;
   width: 100%;
-}
+} */
 
+/* 掲示板の投稿編集のモーダル */
 .modal__content {
   background: #fff;
   left: 50%;

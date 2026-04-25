@@ -18,19 +18,21 @@
 
 // });
 
-document.querySelectorAll('modal calender_js-modal-open').forEach(function(btn){
+document.querySelectorAll('.calender_js-modal-open').forEach(function(btn){
   btn.addEventListener('click', function(){
 
-    const date = this.dataset.data-date;
-    const reservePart = this.dataset.data-part;
+    const date = this.dataset.date;
+    const part = this.dataset.part;
+    const reserveSettingId = this.dataset.reserveSettingId;
 
-    document.getElementById('data-date').textContent = data-date;
-    document.getElementById('data-part').textContent =data-part;
-
+    document.getElementById('modalDate').textContent =date;
+    document.getElementById('modalPart').textContent =part;
+    document.getElementById('modalReserveSettingId').value =reserveSettingId;
+    
     document.getElementById('cancelModal').style.display = 'block';
   });
 });
 
-document.getElementById('js-modal-close').addEventListener('click', function(){
+document.getElementById('calender_js-modal-close').addEventListener('click', function(){
   document.getElementById('cancelModal').style.display ='none';
 });

@@ -13,24 +13,25 @@
       <input type="submit" class="btn btn-primary" value="予約する" form="reserveParts">
     </div>
   </div>
-  <div class="modal calender_js-modal">
+  <div class="modal calender_js-modal" id="cancelModal">
     <div class="modal__bg calender_js-modal-close"></div>
     <div class="modal__content_calender ">
       <form action="{{ route('deleteParts') }}" method="post">
-         @foreach($settings as $setting)
-        <div class="w-100">
+         @csrf
+        <div class="modal-calender  w-70 bg-white">
           <div class="modal-inner w-50 m-auto">
-            <p class="data-date">予約日：{{ $setting->date }}</p>
-            <p class="data-part">時間：リモート{{ $setting->reservePart }}</p>
+            <p>予約日：<spn id="modalDate"></spn></p>
+            <p>時間：リモート<spn id="modalPart"></spn></p>
             <p>上記の予約をキャンセルしてもよろしいですか？</p>
           </div>
+          <input type="hidden" name="reserve_setting_id" id="modalReserveSettingId">
           <div class="w-50 m-auto edit-modal-btn d-flex">
-            <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
-            <input type="hidden" class="edit-modal-hidden_calender" name="reserve_setting_id" value="{{ $setting->id }}">
+            <a class="calender_js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
+            <input type="hidden" class="calender_js-modal" name="reserve_setting_id">
             <input type="submit" class="btn btn-primary d-block" value="キャンセル">
           </div>
         </div>
-        @endforeach
+      
     </div>
 </div>
 <script src="{{ asset('js/calendar.js') }}" rel="stylesheet"></script>

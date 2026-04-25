@@ -51,7 +51,12 @@ class CalendarView{
         $html[] = $day->render();
 
         if(in_array($day->everyDay(), $day->authReserveDay())){
-          $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
+          // calender.blade.phpでIDを渡す為に文字列から数字に変換する為の記述,
+          // どのデータなのかIDで識別(55～57行目)
+          $reserveSetting = $day->authReserveDate($day->everyDay())->first();
+          $reservePart = $reserveSetting->setting_part;
+          $reserveSettingId = $reserveSetting->id;
+          // $day->authReserveDate($day->everyDay())->first()->setting_part;
           if($reservePart == 1){
             $reservePart = "リモ1部";
           }else if($reservePart == 2){
@@ -64,7 +69,15 @@ class CalendarView{
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
             // dd($date);
-            $html[] = '<button type="button" class="btn btn-danger p-0 w-75 calender_js-modal-open" name="delete_date" style="font-size:12px" data-date="' . $date . '" data-part="' . $reservePart .'">'. $reservePart .'</button>';
+            $html[] = '<button type="button"
+            class="btn btn-danger p-0 w-75 calender_js-modal-open"
+            name="delete_date"
+            style="font-size:12px"
+            data-date="' . $date . '"
+            data-part="' . $reservePart .'"
+            data-reserve-setting-id="' . $reserveSetting->id .'">'
+            . $reservePart .
+            '</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         }else{
