@@ -52,7 +52,7 @@ class CalendarView{
 
         if(in_array($day->everyDay(), $day->authReserveDay())){
           // calender.blade.phpでIDを渡す為に文字列から数字に変換する為の記述,
-          // どのデータなのかIDで識別(55～57行目)
+          // どのデータなのかIDで識別(56～58行目)
           $reserveSetting = $day->authReserveDate($day->everyDay())->first();
           $reservePart = $reserveSetting->setting_part;
           $reserveSettingId = $reserveSetting->id;
