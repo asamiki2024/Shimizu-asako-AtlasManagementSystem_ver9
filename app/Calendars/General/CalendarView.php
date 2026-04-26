@@ -51,10 +51,13 @@ class CalendarView{
         $html[] = $day->render();
 
         if(in_array($day->everyDay(), $day->authReserveDay())){
-          // calender.blade.phpでIDを渡す為に文字列から数字に変換する為の記述,
-          // どのデータなのかIDで識別(56～58行目)
+          // $reserveSettingというデータのかたまりから、
+          // $reservePart（部）と$reserveSettingId（ID）をそれぞれ取り出している(57,59,61行目)
+          // 指定日の予約レコード（1件）を取得
           $reserveSetting = $day->authReserveDate($day->everyDay())->first();
+          // 予約している部（1部・2部など）を取得（表示・条件分岐用）
           $reservePart = $reserveSetting->setting_part;
+          // どの予約データをキャンセルするか識別するためのIDを取得
           $reserveSettingId = $reserveSetting->id;
           // $day->authReserveDate($day->everyDay())->first()->setting_part;
           if($reservePart == 1){

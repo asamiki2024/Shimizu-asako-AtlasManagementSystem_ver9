@@ -28,7 +28,7 @@ document.querySelectorAll('.calender_js-modal-open').forEach(function(btn){
     document.getElementById('modalDate').textContent =date;
     document.getElementById('modalPart').textContent =part;
     document.getElementById('modalReserveSettingId').value =reserveSettingId;
-    
+
     document.getElementById('cancelModal').style.display = 'block';
   });
 });

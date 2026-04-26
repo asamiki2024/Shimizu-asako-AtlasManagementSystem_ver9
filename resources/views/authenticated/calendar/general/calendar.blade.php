@@ -17,7 +17,7 @@
     <div class="modal__bg calender_js-modal-close"></div>
     <div class="modal__content_calender ">
       <form action="{{ route('deleteParts') }}" method="post">
-         @csrf
+        @csrf
         <div class="modal-calender  w-70 bg-white">
           <div class="modal-inner w-50 m-auto">
             <p>予約日：<spn id="modalDate"></spn></p>
@@ -27,11 +27,10 @@
           <input type="hidden" name="reserve_setting_id" id="modalReserveSettingId">
           <div class="w-50 m-auto edit-modal-btn d-flex">
             <a class="calender_js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
-            <input type="hidden" class="calender_js-modal" name="reserve_setting_id">
             <input type="submit" class="btn btn-primary d-block" value="キャンセル">
           </div>
         </div>
-      
+      </form>
     </div>
 </div>
 <script src="{{ asset('js/calendar.js') }}" rel="stylesheet"></script>
