@@ -43,6 +43,11 @@ class CalendarView{
         $startDay = $this->carbon->copy()->format("Y-m-01");
         $toDay = $this->carbon->copy()->format("Y-m-d");
 
+        // 今日以前の表示形式を変更。
+        // $toDayData =$toDay
+
+
+
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
           $html[] = '<td class="calendar-td">';
         }else{
@@ -71,7 +76,6 @@ class CalendarView{
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
-            // dd($date);
             $html[] = '<button type="button"
             class="btn btn-danger p-0 w-75 calender_js-modal-open"
             name="delete_date"

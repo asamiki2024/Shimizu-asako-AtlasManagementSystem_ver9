@@ -18,7 +18,7 @@
         <div class="text-right m-3">
           <input type="submit" class="btn btn-primary" value="ログイン">
         </div>
-        <div class="text-center">
+        <div class="text-center" style="padding:7%;">
           <a href="{{ route('registerView') }}">新規登録はこちら</a>
         </div>
       </div>
