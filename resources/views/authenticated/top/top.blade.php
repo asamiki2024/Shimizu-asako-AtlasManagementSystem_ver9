@@ -1,6 +1,6 @@
 <x-sidebar>
 <div class="vh-100 border">
-  <p style="margin-top: 0; margin-left: 3%;">自分のプロフィール</p>
+  <p style="margin-top: 0; padding: 1.5%;">自分のプロフィール</p>
   <div class="top_area w-75 m-auto pt-5">
     <div class="user_status p-3" style="box-shadow:0 0 8px #808080;">
       <p>名前：<span>{{ Auth::user()->over_name }}</span><span class="ml-1">{{ Auth::user()->under_name }}</span></p>
