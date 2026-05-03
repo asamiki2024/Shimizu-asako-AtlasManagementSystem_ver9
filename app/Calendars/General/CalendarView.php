@@ -44,7 +44,21 @@ class CalendarView{
         $toDay = $this->carbon->copy()->format("Y-m-d");
 
         // 今日以前の表示形式を変更。
-        // $toDayData =$toDay
+        $today = \Carbon\Carbon::today();
+        // dd($today);
+        // 対象日
+        $targetDate = Carbon::parse($today)->startOfDay();
+
+        if($targetDate->isPast()){
+          // 今日より前(過去)
+          $past = '受付終了';
+        }elseif($targetDate->isToday()){
+          //  今日
+          $future = 'future-day';
+        }else{
+          // 未来
+        }
+
 
 
 
