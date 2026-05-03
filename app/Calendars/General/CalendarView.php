@@ -44,15 +44,15 @@ class CalendarView{
         $toDay = $this->carbon->copy()->format("Y-m-d");
 
         // 今日以前の表示形式を変更。
-        $today = \Carbon\Carbon::today();
+        $today = Carbon::today();
         // dd($today);
         // 対象日
-        $targetDate = Carbon::parse($today)->startOfDay();
+        // $targetDate = Carbon::createFromFormat('Y-m-d', $day)->startOfDay();
 
-        if($targetDate->isPast()){
+        if($today->isPast()){
           // 今日より前(過去)
           $past = '受付終了';
-        }elseif($targetDate->isToday()){
+        }elseif($today->isToday()){
           //  今日
           $future = 'future-day';
         }else{
@@ -62,9 +62,14 @@ class CalendarView{
 
 
 
-        if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="calendar-td">';
+        if($startDay <= $day->everyDay() && $today <= $startDay->$toDay
+          && $toDay >= $day->everyDay()){
+          $html[] = '<td class="calendar-td day-blank">';
+          // 過去日
+          $html[] = '<span>受付終了</span>';
         }else{
+          // カレンダー全体の表示
+          // $html[] = '<span>カレンダー全体</span>';
           $html[] = '<td class="calendar-td '.$day->getClassName().'">';
         }
         $html[] = $day->render();
@@ -86,10 +91,15 @@ class CalendarView{
           }else if($reservePart == 3){
             $reservePart = "リモ3部";
           }
-          if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
+
+          // 
+          if($startDay <= $day->everyDay()  && $today <= $startDay->$toDay
+            && $toDay >= $day->everyDay()){
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
-          }else{
+            // 今日の日付
+            $html[] = '<span>現在</span>';
+            }else{
             $html[] = '<button type="button"
             class="btn btn-danger p-0 w-75 calender_js-modal-open"
             name="delete_date"
@@ -100,9 +110,13 @@ class CalendarView{
             . $reservePart .
             '</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            // 未来の予約日
+            $html[] = '<span>未来の予約</span>';
           }
+          // 予約されていないものに対して表示している
         }else{
           $html[] = $day->selectPart($day->everyDay());
+          $html[] = '<span>未来</span>';
         }
         $html[] = $day->getDate();
         $html[] = '</td>';
