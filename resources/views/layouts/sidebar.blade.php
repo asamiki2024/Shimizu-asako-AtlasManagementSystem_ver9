@@ -20,9 +20,9 @@
     <body class="all_content">
         <div class="d-flex">
             <div class="sidebar">
-                <p><img src="{{ asset('image/home_icon.png') }}"><a href="{{ route('top.show') }}">トップ</a></p>
-                <p><img src="{{ asset('image/logout.png') }}"><a href="/logout">ログアウト</a></p>
-                <p><img src="{{ asset('image/school_icon.png') }}"><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+                <p class="mt-3 ml-2"><img src="{{ asset('image/home_icon.png') }}"><a href="{{ route('top.show') }}">トップ</a></p>
+                <p class="ml-2"><img src="{{ asset('image/logout.png') }}"><a href="/logout">ログアウト</a></p>
+                <p class="ml-2"><img src="{{ asset('image/school_icon.png') }}"><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
             <!-- 講師アカウントのみ表示 -->
             <!-- ifでroleの1,2,3の選択が講師、4が生徒。生徒には非表示にする。-->
             <!-- @auth...@endauthの間はログインしているユーザーだけ表示される。 -->
@@ -32,13 +32,13 @@
             @auth
                 @if (Auth::check() && in_array(Auth::user()->role, [1, 2, 3]))
                 <div class="teacher-only">
-                    <p><img src="{{ asset('image/school_check.png') }}"><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-                    <p><img src="{{ asset('image/school_plus.png') }}"><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+                    <p class="ml-2"><img src="{{ asset('image/school_check.png') }}"><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
+                    <p class="ml-2"><img src="{{ asset('image/school_plus.png') }}"><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
                 </div>
                 @endif
             @endauth
-                <p><img src="{{ asset('image/message.png') }}"><a href="{{ route('post.show') }}">掲示板</a></p>
-                <p><img src="{{ asset('image/users.png') }}"><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+                <p class="ml-2"><img src="{{ asset('image/message.png') }}"><a href="{{ route('post.show') }}">掲示板</a></p>
+                <p class="ml-2"><img src="{{ asset('image/users.png') }}"><a href="{{ route('user.show') }}">ユーザー検索</a></p>
             </div>
             <div class="main-container">
                 {{ $slot }}

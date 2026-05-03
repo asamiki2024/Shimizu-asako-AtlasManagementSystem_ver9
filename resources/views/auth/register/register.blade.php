@@ -8,16 +8,16 @@
           @error('over_name')
           <div class="register-error">{{ $message }}</div>
             @enderror
-          <div class="d-flex mt-3" style="justify-content:space-between">
+            @error('under_name')
+          <div class="register-error">{{ $message }}</div>
+            @enderror
+          <div class="d-flex mt-1" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">姓</label>
               <div class="border-bottom border-primary" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 over_name" name="over_name">
               </div>
             </div>
-          @error('under_name')
-        <div class="register-error">{{ $message }}</div>
-          @enderror
             <div class="" style="width:140px">
               <label class=" d-block m-0" style="font-size:13px">名</label>
               <div class="border-bottom border-primary" style="width:140px;">
@@ -32,7 +32,7 @@
                 @error('under_name_kana')
               <div class="register-error">{{ $message }}</div>
                 @enderror
-          <div class="d-flex mt-3" style="justify-content:space-between">
+          <div class="d-flex mt-1" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">セイ</label>
               <div class="border-bottom border-primary" style="width:140px;">
@@ -50,7 +50,7 @@
               @error('mail_address')
               <div class="register-error">{{ $message }}</div>
                 @enderror
-          <div class="mt-3">
+          <div class="mt-1">
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
               <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
@@ -61,7 +61,7 @@
               @error('sex')
               <div class="register-error">{{ $message }}</div>
                 @enderror
-        <div class="mt-3 d-flex" style="justify-content:center; gap:20px;">
+        <div class="mt-1 d-flex" style="justify-content:center; gap:20px;">
           <input type="radio" name="sex" class="sex" value="1">
           <label style="font-size:13px">男性</label>
           <input type="radio" name="sex" class="sex" value="2">
@@ -73,7 +73,7 @@
               @error('birth_day')
               <div class="register-error">{{ $message }}</div>
                 @enderror
-        <div class="mt-3">
+        <div class="mt-1">
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
           <div class="old-group">
             <select class="old_year border-bottom border-primary" name="old_year">
@@ -163,7 +163,7 @@
               @error('role')
               <div class="register-error">{{ $message }}</div>
                 @enderror
-        <div class="mt-3">
+        <div class="mt-1">
           <label class="d-block m-0" style="font-size:13px">役職</label>
           <div class="role-group d-flex" style="justify-content:space-around;">
             <input type="radio" name="role" class="admin_role role" value="1">
@@ -189,7 +189,7 @@
               @error('password')
               <div class="register-error">{{ $message }}</div>
                 @enderror
-        <div class="mt-3">
+        <div class="mt-1">
           <label class="d-block m-0" style="font-size:13px">パスワード</label>
           <div class="border-bottom border-primary">
             <input type="password" class="border-0 w-100 password" name="password">
@@ -199,7 +199,7 @@
               @error('password_confirmation')
               <div class="register-error">{{ $message }}</div>
                 @enderror
-        <div class="mt-3">
+        <div class="mt-1">
           <label class="d-block m-0" style="font-size:13px">確認用パスワード</label>
           <div class="border-bottom border-primary">
             <input type="password" class="border-0 w-100 password_confirmation" name="password_confirmation">
