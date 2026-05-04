@@ -62,8 +62,7 @@ class CalendarView{
 
 
 
-        if($startDay <= $day->everyDay() && $today <= $startDay->$toDay
-          && $toDay >= $day->everyDay()){
+        if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
           $html[] = '<td class="calendar-td day-blank">';
           // 過去日
           $html[] = '<span>受付終了</span>';
@@ -93,8 +92,7 @@ class CalendarView{
           }
 
           // 
-          if($startDay <= $day->everyDay()  && $today <= $startDay->$toDay
-            && $toDay >= $day->everyDay()){
+          if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
             // 今日の日付

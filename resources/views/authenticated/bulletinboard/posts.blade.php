@@ -35,9 +35,11 @@
         <input class="post_keyword" type="text" placeholder="キーワードを検索" name="keyword" name="sub_category" form="postSearchRequest">
         <input class="post_search_btn" type="submit" value="検索" form="postSearchRequest">
       </div>
-      <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
-      <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
-      <ul>
+      <div class="category-btn d-flex">
+        <input type="submit" name="like_posts" class="category_btn like" value="いいねした投稿" form="postSearchRequest">
+        <input type="submit" name="my_posts" class="category_btn my_posts" value="自分の投稿" form="postSearchRequest">
+      </div>
+        <ul>
         <!-- 登録されているメインカテゴリー -->
         @foreach($categories as $category)
         <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
