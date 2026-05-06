@@ -303,6 +303,17 @@ figure img{
   justify-content: space-between;
 }
 
+/* 掲示板新規投稿画面　メインカテゴリー、サブカテゴリー欄 */
+.main-btn {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.sub-input {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
 /* 掲示板 コメント */
 .comment_container {
   background: #FFF;

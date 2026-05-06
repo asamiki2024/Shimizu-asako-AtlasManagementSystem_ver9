@@ -46,7 +46,7 @@
         <p class="m-0">メインカテゴリー</p>
         <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}
           <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
-          <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
+          <input type="submit" value="追加" class="w-100 btn btn-primary p-0 main-btn" form="mainCategoryRequest">
         </form>
       </div>
       <!-- サブカテゴリー追加 -->
@@ -61,7 +61,7 @@
           <option label="{{ $main_category->main_category }}" value="{{ $main_category->id }}">
           </option>
           @endforeach
-        <input type="text" class="w-100" name="sub_category_name" form="subCategoryRequest">
+        <input type="text" class="w-100 sub-input" name="sub_category_name" form="subCategoryRequest">
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="subCategoryRequest">
        </form>
     </div>
