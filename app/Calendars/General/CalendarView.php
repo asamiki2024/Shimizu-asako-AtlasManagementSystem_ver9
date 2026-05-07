@@ -32,31 +32,51 @@ class CalendarView{
     $html[] = '</thead>';
     $html[] = '<tbody>';
     $weeks = $this->getWeeks();
+
+    // 4週間分$weeksの中から1週間分の$weekを取り出そうとしている。
     foreach($weeks as $week){
+      // trタグのクラス名の名前を設定している。一週間ごとに名前が設定される。
       $html[] = '<tr class="'.$week->getClassName().'">';
 
+      // 1週間分のデータを表している
       $days = $week->getDays();
+
+      // 1週間分$daysの中から1日分$dayを取り出そうとしている。
       foreach($days as $day){
         // 追加 予約したボタンに送る日付のデータ
         $date = $day->everyDay();
 
+        // フォーマットでカレンダーの初日を取得している。2026-05-01
         $startDay = $this->carbon->copy()->format("Y-m-01");
+        
+        // 今日の日付を取得。2026-05-07
         $toDay = $this->carbon->copy()->format("Y-m-d");
 
+        // 過去判定をする為の変数 $dateの中に一つ一つの日付のデータ、予約データが入っている為$dateと今日を示す$toDayを比べて過去日なのかを判別する。
+        $isPast = $date && ($date < $toDay);
+
         // 今日以前の表示形式を変更。
-        $today = Carbon::today();
+        // $today = Carbon::today();
         // dd($today);
         // 対象日
         // $targetDate = Carbon::createFromFormat('Y-m-d', $day)->startOfDay();
 
-        if($today->isPast()){
-          // 今日より前(過去)
-          $past = '受付終了';
-        }elseif($today->isToday()){
-          //  今日
-          $future = 'future-day';
+        //予約が有か無か if(予約があるかどうか)
+        if($isPast){
+        // 予約ある場合var
+        if($isPast){
+          // 過去で予約がある場合
         }else{
-          // 未来
+          // 今日＆未来で予約がある場合
+        }
+        
+        }else{
+          // 予約なしの場合var
+        if($isPast){
+          // 過去で予約なしの場合
+        }else{
+          // 今日＆未来で予約なしの場合
+        }
         }
 
 
