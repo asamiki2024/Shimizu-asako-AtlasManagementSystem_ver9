@@ -85,7 +85,6 @@ class CalendarView{
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
           $html[] = '<td class="calendar-td day-blank">';
           // 過去日
-          $html[] = '<span>受付終了</span>';
         }else{
           // カレンダー全体の表示
           // $html[] = '<span>カレンダー全体</span>';
@@ -129,12 +128,12 @@ class CalendarView{
             '</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
             // 未来の予約日
-            $html[] = '<span>未来の予約</span>';
+            $html[] = '<span>受付終了</span>';
           }
           // 予約されていないものに対して表示している
-        }else{
+        }else if($isPast < $date){
           $html[] = $day->selectPart($day->everyDay());
-          $html[] = '<span>未来</span>';
+          $html[] = '<span></span>';
         }
         $html[] = $day->getDate();
         $html[] = '</td>';
