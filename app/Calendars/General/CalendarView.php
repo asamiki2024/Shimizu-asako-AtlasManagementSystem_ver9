@@ -109,14 +109,9 @@ class CalendarView{
           }else if($reservePart == 3){
             $reservePart = "リモ3部";
           }
-
-          // 
-          if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
-            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
-            // 今日の日付
-            $html[] = '<span>現在</span>';
-            }else{
+          if($isPast){
+            $html[] ='<spn>' . $reservePart .'参加</spn>';
+          }else{
             $html[] = '<button type="button"
             class="btn btn-danger p-0 w-75 calender_js-modal-open"
             name="delete_date"
@@ -127,13 +122,39 @@ class CalendarView{
             . $reservePart .
             '</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+          }
+
+        }else{
+          if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
+            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            }else{
+            // 今日の日付
+            // $html[] = '<span>受付終了</span>';
+            if($isPast){
+                $html[] = '<span>受付終了</span>';
+              }else{
+                // 予約なし・プルダウンで表示
+                $html[] = $day->selectPart($day->everyDay());
+                }
+
+            // $html[] = '<spn>'. $reservePart .'<button type="button"
+            // class="btn btn-danger p-0 w-75 calender_js-modal-open"
+            // name="delete_date"
+            // style="font-size:12px"
+            // data-date="' . $date . '"
+            // data-part="' . $reservePart .'"
+            // data-reserve-setting-id="' . $reserveSetting->id .'">'
+            // . $reservePart .
+            // '</button>参加</spn>';
+            // $html[] = '<input type="hidden" name="getPart[]" value="{{ $reservePart->id }}" form="reserveParts">';
             // 未来の予約日
-            $html[] = '<span>受付終了</span>';
+          
           }
           // 予約されていないものに対して表示している
-        }else if($isPast < $date){
-          $html[] = $day->selectPart($day->everyDay());
-          $html[] = '<span></span>';
+          // 予約なし・プルダウンで表示
+          // $html[] = $day->selectPart($day->everyDay());
+          // $html[] = '<span></span>';
         }
         $html[] = $day->getDate();
         $html[] = '</td>';
