@@ -55,39 +55,32 @@ class CalendarView{
         // 過去判定をする為の変数 $dateの中に一つ一つの日付のデータ、予約データが入っている為$dateと今日を示す$toDayを比べて過去日なのかを判別する。
         $isPast = $date && ($date < $toDay);
 
-        // 今日以前の表示形式を変更。
-        // $today = Carbon::today();
-        // dd($today);
-        // 対象日
-        // $targetDate = Carbon::createFromFormat('Y-m-d', $day)->startOfDay();
-
+        // 表示形式の変更の参考のif文
         //予約が有か無か if(予約があるかどうか)
-        if($isPast){
+        // if($isPast){
         // 予約ある場合var
-        if($isPast){
+        // if($isPast){
           // 過去で予約がある場合
-        }else{
+        // }else{
           // 今日＆未来で予約がある場合
-        }
+        // }
         
-        }else{
+        // }else{
           // 予約なしの場合var
-        if($isPast){
+        // if($isPast){
           // 過去で予約なしの場合
-        }else{
+        // }else{
           // 今日＆未来で予約なしの場合
-        }
-        }
+        // }
+        // }
 
 
 
-
+        // 予約しているかどうかを見ている
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
           $html[] = '<td class="calendar-td day-blank">';
-          // 過去日
         }else{
           // カレンダー全体の表示
-          // $html[] = '<span>カレンダー全体</span>';
           $html[] = '<td class="calendar-td '.$day->getClassName().'">';
         }
         $html[] = $day->render();
@@ -109,9 +102,14 @@ class CalendarView{
           }else if($reservePart == 3){
             $reservePart = "リモ3部";
           }
+          // 予約があり、過去日なら
           if($isPast){
+            // 何部参加か表示。見えない値で部数のデータを送っている。inputタグで。
             $html[] ='<spn>' . $reservePart .'参加</spn>';
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
+            // 予約があり、未来日なら
+            // 予約日、何部なのかをデータ属性でデータを送り、そのデータを削除する事が出来る。
             $html[] = '<button type="button"
             class="btn btn-danger p-0 w-75 calender_js-modal-open"
             name="delete_date"
@@ -125,42 +123,24 @@ class CalendarView{
           }
 
         }else{
+          // 予約がなし、過去日の場合
+          // 受付終了を表示させる。見えない値で何もデータが入っていないことを送っている。inputタグで。
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            $html[] = '<span>受付終了</span>';
             }else{
-            // 今日の日付
-            // $html[] = '<span>受付終了</span>';
-            if($isPast){
-                $html[] = '<span>受付終了</span>';
-              }else{
-                // 予約なし・プルダウンで表示
+                // 予定なし、未来日の場合
+                // 予約なし・プルダウンで部数を選べるように表示
                 $html[] = $day->selectPart($day->everyDay());
-                }
-
-            // $html[] = '<spn>'. $reservePart .'<button type="button"
-            // class="btn btn-danger p-0 w-75 calender_js-modal-open"
-            // name="delete_date"
-            // style="font-size:12px"
-            // data-date="' . $date . '"
-            // data-part="' . $reservePart .'"
-            // data-reserve-setting-id="' . $reserveSetting->id .'">'
-            // . $reservePart .
-            // '</button>参加</spn>';
-            // $html[] = '<input type="hidden" name="getPart[]" value="{{ $reservePart->id }}" form="reserveParts">';
-            // 未来の予約日
-          
-          }
-          // 予約されていないものに対して表示している
-          // 予約なし・プルダウンで表示
-          // $html[] = $day->selectPart($day->everyDay());
-          // $html[] = '<span></span>';
-        }
-        $html[] = $day->getDate();
-        $html[] = '</td>';
-      }
-      $html[] = '</tr>';
-    }
+            }
+            }
+            // その月の日付を並べているものになります。
+                $html[] = $day->getDate();
+                $html[] = '</td>';
+            }
+                $html[] = '</tr>';
+            }
     $html[] = '</tbody>';
     $html[] = '</table>';
     $html[] = '</div>';

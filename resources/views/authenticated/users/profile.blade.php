@@ -19,7 +19,7 @@
           <form action="{{ route('user.edit') }}" method="post">
             @foreach($subject_lists as $subject_list)
             <div>
-              <label>{{ $subject_list->subject }}{{ $subject->count() }}</label>
+              <label>{{ $subject_list->subject }}</label>
               <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
             </div>
             @endforeach
