@@ -250,13 +250,14 @@ figure img{
 
 /* ボタンの右寄せ */
 .post_bottom_area {
-  justify-content: space-between;
-  margin-left: 83%;
+
+  margin-left: 80%;
 }
 
 .like_btn,
 .un_like_btn {
   cursor: pointer;
+
 }
 
 .un_like,
@@ -276,6 +277,10 @@ figure img{
   font-weight: bold;
 }
 
+.sub_category_group {
+  margin-right: 70%;
+}
+
 .detsail_post_title {
   font-size: 14px;
 }
@@ -287,7 +292,7 @@ figure img{
 
 .detail_inner_head {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .edit-modal-open {
@@ -369,9 +374,10 @@ figure img{
 
 /* 投稿ごとのサブカテゴリー */
 .sub_category_name {
-  background-color: #03AAD2;
+  background-color:  #03AAD2;
   color: #FFF;
   border-radius: 5px;
+  padding: 0 5px;
 }
 
 /* ユーザー検索 */

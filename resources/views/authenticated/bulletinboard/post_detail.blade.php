@@ -14,14 +14,19 @@
         <div class="detail_inner_head">
           <div>
           </div>
+          <div class="sub_category_group">
+            @foreach($post->subCategories as $sub_category)
+            <p><span class="sub_category_name">{{ $sub_category->sub_category }}</span></p>
+            @endforeach
+          </div>
           <div>
             <!-- ifで自分以外が編集出来ない様に設定。Auth::id()でログインしているユーザー。$post->user_idで自分以外。　===は完全一致すれば自分以外には編集機能が出ない表示になる。 -->
-             @if (Auth::id()  === $post->user_id)
-            <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+            @if (Auth::id()  === $post->user_id)
+              <span class="edit-modal-open btn btn-primary" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
             @endif
             <!-- ifで自分以外が投稿削除出来ない様に設定。Auth::id()でログインしているユーザー。$post->user_idで自分以外。　===は完全一致すれば自分以外には削除機能が出ない表示になる。 -->
             @if (Auth::id()  === $post->user_id)
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してよろしいですか？')">削除</a>
+              <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="btn btn-danger" onclick="return confirm('削除してよろしいですか？')">削除</a>
             @endif
           </div>
         </div>
