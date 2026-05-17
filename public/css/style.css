@@ -121,6 +121,7 @@ figure img{
   position: fixed;
   top: 0;
   width: 100%;
+  background-color: black;
 }
 
 /* スクール予約ページ キャンセルモーダル */
