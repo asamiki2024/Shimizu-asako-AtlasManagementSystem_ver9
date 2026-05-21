@@ -122,6 +122,7 @@ figure img{
   top: 0;
   width: 100%;
   background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* スクール予約ページ キャンセルモーダル */

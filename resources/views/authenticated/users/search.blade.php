@@ -3,7 +3,7 @@
 <div class="search_content w-100 border d-flex">
   <div class="reserve_users_area">
     @foreach($users as $user)
-    <div class="border one_person">
+    <div class="border one_person" style="box-shadow:0 0 8px #808080;">
       <div>
         <span>ID : </span><span>{{ $user->id }}</span>
       </div>
