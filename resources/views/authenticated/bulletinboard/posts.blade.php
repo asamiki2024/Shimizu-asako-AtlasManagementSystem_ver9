@@ -41,19 +41,24 @@
         <input type="submit" name="like_posts" class="category_btn like" value="いいねした投稿" form="postSearchRequest">
         <input type="submit" name="my_posts" class="category_btn my_posts" value="自分の投稿" form="postSearchRequest">
       </div>
-        <ul>
+        <ul class="accordion" id="accordionExample">
         <!-- 登録されているメインカテゴリー -->
-        @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+          <li class="card">
+            @foreach($categories as $category)
+            <li class="main_categories card-header" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"  category_id="{{ $category->id }}headingOne"><span>{{ $category->main_category }}<span></li>
+          
         <!-- 登録されているサブカテゴリー -->
          <!-- サブカテゴリーのボタンを押すとサブカテゴリーに属する投稿が表示される -->
           @foreach($category->subCategories as $sub)
-            <li class="sub_category">
-              <form action="{{ route('post.show') }}" method="get">
-                <input type="hidden" name="sub_category_id" value="{{ $sub->id }}">
-                <button type="submit" class="category_btn" >{{ $sub->sub_category }}</button>
-              </form>
+            <li class="sub_category collapse show" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <li class="card-body">
+                <form action="{{ route('post.show') }}" method="get">
+                  <input type="hidden" name="sub_category_id" value="{{ $sub->id }}">
+                  <button type="submit" class="category_btn sub" >{{ $sub->sub_category }}</button>
+                </form>
+              </li>
             </li>
+          </li>
           @endforeach
         @endforeach
       </ul>

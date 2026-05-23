@@ -374,6 +374,10 @@ figure img{
   cursor: pointer;
 }
 
+.sub {
+  color: black;
+}
+
 /* 投稿ごとのサブカテゴリー */
 .sub_category_name {
   background-color:  #03AAD2;
@@ -393,6 +397,10 @@ figure img{
   padding: 10px;
   background: #FFF;
   border-radius: 5px;
+  /* 横4列縦3列 */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
 .reserve_users_area span {
@@ -402,6 +410,7 @@ figure img{
 .one_person {
   width: 250px;
   height: 250px;
+  padding: 25px;
 }
 
 .search_conditions span {
