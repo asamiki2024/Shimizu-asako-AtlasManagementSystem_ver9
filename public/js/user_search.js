@@ -6,4 +6,9 @@ $(function () {
   $('.subject_edit_btn').click(function () {
     $('.subject_inner').slideToggle();
   });
+
+
+$('.main_categories_conditions').click(function () {
+    $('.sub_category_inner').slideToggle();
+  });
 });

@@ -142,6 +142,10 @@ figure img{
   width: 100%;
 } */
 
+.calendar-td {
+  border: 1px solid #dee2e6;
+}
+
 /* 掲示板の投稿編集のモーダル */
 .modal__content {
   background: #fff;
@@ -385,6 +389,16 @@ figure img{
   border-radius: 5px;
   padding: 0 5px;
 }
+
+/* 掲示板アコーディオンメニュー */
+.main_categories_conditions span {
+  cursor: pointer;
+}
+
+.sub_category_inner {
+  display: none;
+}
+
 
 /* ユーザー検索 */
 .reserve_users_area {
