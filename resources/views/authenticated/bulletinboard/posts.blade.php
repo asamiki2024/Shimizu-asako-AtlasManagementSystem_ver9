@@ -53,8 +53,8 @@
                         <input type="hidden" name="sub_category_id" value="{{ $sub->id }}">
                         <button type="submit" class="category_btn sub">{{ $sub->sub_category }}</button>
                       </form>
-                      @endforeach
                   </li>
+                      @endforeach
             @endforeach
       </ul>
     </div>

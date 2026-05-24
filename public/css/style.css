@@ -91,6 +91,7 @@ figure img{
 
 .calendar-td {
   min-width: 100px;
+  border: 1px solid #dee2e6;
 }
 
 .day_part {
@@ -141,10 +142,6 @@ figure img{
   position: absolute;
   width: 100%;
 } */
-
-.calendar-td {
-  border: 1px solid #dee2e6;
-}
 
 /* 掲示板の投稿編集のモーダル */
 .modal__content {
