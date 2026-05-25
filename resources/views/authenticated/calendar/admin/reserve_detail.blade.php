@@ -6,7 +6,7 @@
       <!-- Carbonをバックスラッシュで直接書き出しcarbonを使用出来るようにする。＄dateの日付をフォーマットに直して表示させる。 -->
       <p><span>{{ \Carbon\Carbon::parse($date)->format('Y年n月j日') }}</span><span class="ml-3">{{ $part }}部</span></p>
       <div class="h-75 border">
-        <table class="">
+        <table class="reserve-table">
           <tr class="text-center">
             <th class="w-25">ID</th>
             <th class="w-25">名前</th>
@@ -16,7 +16,7 @@
            <!-- 2つめの＠foreachで$reserveからusersテーブルから予約した人のデータを取り出す。 -->
           @foreach($reservePersons as $reserve)
           @foreach($reserve->users as $user)
-            <tr class="text-center">
+            <tr class="text-center reserve-tr">
               <td class="w-25">{{ $user->id }}</td>
               <td class="w-25">{{ $user->over_name}}{{$user->under_name }}</td>
               <td class="w-25">リモート</td>

@@ -143,6 +143,17 @@ figure img{
   width: 100%;
 } */
 
+/* スクール予約詳細画面 */
+/* 見出し部分 */
+.reserve-table tr:nth-child(odd) {
+  background-color: #03AAD2;
+  color: #FFF;
+}
+
+.reserve-tr :nth-child(odd) {
+  background-color: #FFF;
+}
+
 /* 掲示板の投稿編集のモーダル */
 .modal__content {
   background: #fff;
@@ -401,9 +412,9 @@ figure img{
 .reserve_users_area {
   display: flex;
   flex-wrap: wrap;
-  width: 800px;
+  width: 1100px;
   margin: 10px auto;
-  height: 80vh;
+  height: 90vh;
   overflow: scroll;
   padding: 10px;
   background: #FFF;
