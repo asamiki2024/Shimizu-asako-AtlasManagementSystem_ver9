@@ -9,9 +9,14 @@ $(function () {
 
 
 $('.main_categories_conditions').click(function () {
-      this.nextElementSibling;
-    $('.sub_category_inner').slideToggle('open');
+      const targetSubcategory = this.nextElementSibling;
   });
+
+  if (targetSubcategory.style.display === 'none') {
+            targetSubcategory.style.display = 'block';
+        } else {
+            targetSubcategory.style.display = 'none';
+        }
 
   // 動かなかった記述
 // const main_categories_conditions =
