@@ -44,11 +44,11 @@
         <ul>
         <!-- 登録されているメインカテゴリー -->
             @foreach($categories as $category)
-                  <li class="main_categories main_categories_conditions" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+                  <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
           <!-- 登録されているサブカテゴリー -->
           <!-- サブカテゴリーのボタンを押すとサブカテゴリーに属する投稿が表示される -->
             @foreach($category->subCategories as $sub)
-                  <li class="sub_category sub_category_inner" category_id="{{ $category->id }}">
+                  <li class="sub_category sub_category_inner" sub_category_id="{{ $sub->id }}">
                       <form action="{{ route('post.show') }}" method="get">
                         <input type="hidden" name="sub_category_id" value="{{ $sub->id }}">
                         <button type="submit" class="category_btn sub">{{ $sub->sub_category }}</button>
