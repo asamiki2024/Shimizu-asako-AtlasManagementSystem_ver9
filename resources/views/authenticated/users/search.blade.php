@@ -55,8 +55,8 @@
     @endforeach
   </div>
   <div class="search_area w-25 border">
-    <div class="">
-      <div>
+    <div class="search-box">
+      <div><p style="margin-bottom:5%;">検索</p>
         <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
       </div>
       <div>

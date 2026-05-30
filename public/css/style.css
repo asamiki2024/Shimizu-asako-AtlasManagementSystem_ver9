@@ -457,6 +457,19 @@ figure img{
   padding: 25px;
 }
 
+/* ユーザー検索ボタンエリア */
+.free_word input {
+  height: 35px;
+}
+
+
+.free_word {
+  border-radius: 5px;
+  background-color: #d3d3d3;
+  border: none;
+  font-size: 15px;
+}
+
 .search_conditions span {
   cursor: pointer;
 }
