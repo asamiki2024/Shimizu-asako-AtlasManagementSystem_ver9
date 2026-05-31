@@ -8,7 +8,7 @@ $(function () {
   });
 
    $('.main_categories').click(function () {
-    $('.sub_category_inner'. category_id).slideToggle();
+    $('.sub_category_inner category_id').slideToggle();
   });
 
 // $('.main_categories_conditions').click(function () {
@@ -22,27 +22,27 @@ $(function () {
 //         }
 
   // 動かなかった記述
-// const category =
+// const main_categories =
 //   document.querySelectorAll('.main_categories');
 
-// const sub =
+// const sub_category =
 //   document.querySelectorAll('.sub_category');
   
 
-//   category.forEach(category => {
-//     category.addEventListener('click', function(){
+//   category.forEach( main_categories=> {
+//     main_categories.addEventListener('click', function(){
 
 //       const category_id =
-//       this.dataset.category;
+//       this.dataset.main_categories;
 
-//       sub.forEach(sub => {
-//         sub.classList.remove('open');
+//       sub.forEach( sub_category=> {
+//         sub_category.classList.remove('open');
 //       });
 
-//       subs.forEach(sub => {
+//       sub_category.forEach( category_id=> {
 
-//         if(sub.dataset.category === category_id) {
-//           sub.classList.add('open');
+//         if(sub_category.dataset.category_id === category_id) {
+//           sub_category.classList.add('open');
 //         }
 //       });
 //     });
