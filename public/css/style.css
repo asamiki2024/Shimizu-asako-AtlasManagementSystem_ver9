@@ -458,16 +458,33 @@ figure img{
 }
 
 /* ユーザー検索ボタンエリア */
-.free_word input {
-  height: 35px;
+/* キーワード、ボタンエリアのフォームの大きさ、高さ */
+.search-box div input {
+  height: 45px;
+  width: 80%;
 }
 
-
+/* キーワードのレイアウト */
 .free_word {
   border-radius: 5px;
   background-color: #d3d3d3;
   border: none;
   font-size: 15px;
+}
+
+/* 検索ボタンレイアウト */
+.search_btn_style input {
+  color: #FFF;
+  background-color: #03AAD2;
+  border: none;
+  border-radius: 5px;
+}
+
+/* リセットボタンレイアウト */
+.reset_btn_style input  {
+  border: none;
+  color: #03AAD2;
+  background-color: #ECF1F6;
 }
 
 .search_conditions span {

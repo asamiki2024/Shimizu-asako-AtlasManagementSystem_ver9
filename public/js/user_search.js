@@ -7,9 +7,27 @@ $(function () {
     $('.subject_inner').slideToggle();
   });
 
-   $('.main_categories').click(function () {
-    $('.sub_category_inner category_id').slideToggle();
-  });
+  //  $('.main_categories').click(function () {
+  //   // console.log('');
+  //   let category_id = $(this).attr('category_id');
+  // console.log(category_id);
+  //   // $('.sub_category_inner category_id').slideToggle();
+  // });
+
+      $('.main_categories').click(function () {
+        var category_id = $(this).attr('category_id');
+        $('.sub_category_inner' + category_id).slideToggle();
+        $(this).toggleClass('open');
+      });
+
+
+  
+  // $('.main_categories').click(function () {
+  //   console.log('.sub_category_inner');
+  //   let category_id = $(this).attr('category_id');
+  // console.log(category_id);
+  //   // $('.sub_category_inner category_id').slideToggle();
+  // });
 
 // $('.main_categories_conditions').click(function () {
 //       const targetSubcategory = this.nextElementSibling;
@@ -46,8 +64,17 @@ $(function () {
 //         }
 //       });
 //     });
+
+// document.querySelectorAll('.main_categories-open')(function(){
+//   sub_category_inner.addEventListener('click', function(){
+    
+//     const sub_category_inner = this.dataset.sub_category_inner;
+//     data-sub_category_inner="$(this).attr('category_id'); ";
+//     document.getElementById('category_id').textContent =category_id;
 //   });
-
-
-
+  
+//   document.getElementById('.main_categories-close').addEventListener('click', function(){
+//     document.getElementById('.main_categories').style.display ='none';
+//   });
+//   });
 });

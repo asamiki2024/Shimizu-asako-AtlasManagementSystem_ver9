@@ -56,7 +56,7 @@
   </div>
   <div class="search_area w-25 border">
     <div class="search-box">
-      <div><p style="margin-bottom:5%;">検索</p>
+      <div><p style="margin-bottom:5%; font-size:20px;">検索</p>
         <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
       </div>
       <div>
@@ -107,11 +107,11 @@
           </div>
       </div>
       </div>
-      <div>
-        <input type="reset" value="リセット" form="userSearchRequest">
-      </div>
-      <div>
+      <div class="search_btn_style">
         <input type="submit" name="search_btn" value="検索" form="userSearchRequest">
+        </div>
+        <div class="reset_btn_style">
+          <input type="reset" value="リセット" form="userSearchRequest">
       </div>
     </div>
     <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
