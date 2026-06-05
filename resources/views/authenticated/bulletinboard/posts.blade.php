@@ -47,7 +47,7 @@
                   <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
           <!-- 登録されているサブカテゴリー -->
           <!-- サブカテゴリーのボタンを押すとサブカテゴリーに属する投稿が表示される -->
-            <div class="sub_categories" sub_category_inner="{{ $category->id }}">
+            <div class="sub_categories" sub_category_id="{{ $category->id }}">
               @foreach($category->subCategories as $sub)
                   <!-- <li class="sub_categories" sub_category_inner="{{ $category->id }}"> -->
                       <form action="{{ route('post.show') }}" method="get">

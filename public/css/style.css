@@ -403,9 +403,13 @@ figure img{
 }
 
 .main_categories span,
-.sub_categories li input {
+.sub_categories input {
   list-style: none;
   cursor: pointer;
+}
+
+.sub_categories {
+  display: none;
 }
 
 .sub {
@@ -464,6 +468,13 @@ figure img{
   width: 80%;
 }
 
+/* ユーザー検索右側　カテゴリー */
+.search-box select {
+  border-radius: 5px;
+  background-color: #d3d3d3;
+  border: none;
+  font-size: 15px;
+}
 /* キーワードのレイアウト */
 .free_word {
   border-radius: 5px;
@@ -479,6 +490,7 @@ figure img{
   border: none;
   border-radius: 5px;
 }
+
 
 /* リセットボタンレイアウト */
 .reset_btn_style input  {

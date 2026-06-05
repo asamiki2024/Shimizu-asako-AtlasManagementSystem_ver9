@@ -16,7 +16,7 @@ $(function () {
 
       $('.main_categories').click(function () {
         var category_id = $(this).attr('category_id');
-        $('.sub_category_inner' + category_id).slideToggle();
+        $('.sub_categories' + sub_category_inner).slideToggle();
         $(this).toggleClass('open');
       });
 

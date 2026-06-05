@@ -59,12 +59,14 @@
       <div><p style="margin-bottom:5%; font-size:20px;">検索</p>
         <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
       </div>
-      <div>
+      <div style="margin-top:5%;">
         <lavel>カテゴリ</lavel>
-        <select form="userSearchRequest" name="category">
-          <option value="name">名前</option>
-          <option value="id">社員ID</option>
-        </select>
+          <p style="margin-top:5%;">
+            <select form="userSearchRequest" name="category">
+              <option value="name">名前</option>
+              <option value="id">社員ID</option>
+            </select>
+          </p>
       </div>
       <div>
         <label>並び替え</label>
