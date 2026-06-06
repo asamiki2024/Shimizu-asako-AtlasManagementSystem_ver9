@@ -85,13 +85,30 @@ figure img{
   color: #FF0000;
 }
 
+/* 土曜日 */
+thead tr th:nth-child(6) {
+  color: #0000FF;
+}
+
+/* 日曜日 */
+thead tr th:nth-child(7) {
+  color: #FF0000;
+}
+
+.day-blank div:nth-child(6) {
+  color: #0000FF;
+}
+
+/* 予約ボタン */
+.calender_btn  input {
+  margin-top: 3%;
+}
 .past-day {
   background: #EEE;
 }
 
 .calendar-td {
   min-width: 100px;
-  border: 1px solid #dee2e6;
 }
 
 .day_part {
@@ -429,9 +446,64 @@ figure img{
   cursor: pointer;
 }
 
-.sub_category_inner {
+.sub_categories {
   display: none;
 }
+
+.sub_categories.open {
+  display: block;
+}
+
+/*バー部分*/
+.accordion label {
+  cursor :pointer;
+  display: block;
+  text-decoration: none;
+  line-height: 1;
+  position: relative;
+  margin: 0 0 10px;
+  padding: 10px;
+}
+/*閉じた状態の矢印描画*/
+.accordion label:after{
+  content:"";
+  display:block;
+  width:8px;
+  height:8px;
+  border-top: #fff 2px solid;
+  border-right: #fff 2px solid;
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+  position:absolute;
+  right: 2%;
+  top: 0;
+  bottom: 15%;
+  margin: auto;
+}
+/*開いた状態の矢印描画*/
+.accordion label[type=checkbox]:checked + label:after{
+  content:"";
+  display:block;
+  width:8px;
+  height:8px;
+  border-top: #fff 2px solid;
+  border-right: #fff 2px solid;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position:absolute;
+  right: 2%;
+  top: 7%;
+  bottom: 0;
+  margin: auto;
+}
+
+
+
+
+
+
 
 
 /* ユーザー検索 */
@@ -463,7 +535,7 @@ figure img{
 
 /* ユーザー検索ボタンエリア */
 /* キーワード、ボタンエリアのフォームの大きさ、高さ */
-.search-box div input {
+.search-box1 input {
   height: 45px;
   width: 80%;
 }
@@ -482,6 +554,11 @@ figure img{
   border: none;
   font-size: 15px;
 }
+
+.search-box2 select, .search-box3 select, .search-box4 select{
+  height: 30px;
+}
+
 
 /* 検索ボタンレイアウト */
 .search_btn_style input {

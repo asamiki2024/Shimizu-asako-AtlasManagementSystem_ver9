@@ -41,24 +41,26 @@
         <input type="submit" name="like_posts" class="category_btn like" value="いいねした投稿" form="postSearchRequest">
         <input type="submit" name="my_posts" class="category_btn my_posts" value="自分の投稿" form="postSearchRequest">
       </div>
-        <ul>
+      <div class="accordion">
         <!-- 登録されているメインカテゴリー -->
             @foreach($categories as $category)
-                  <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+                  <label class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></label>
           <!-- 登録されているサブカテゴリー -->
           <!-- サブカテゴリーのボタンを押すとサブカテゴリーに属する投稿が表示される -->
-            <div class="sub_categories" sub_category_id="{{ $category->id }}">
+          <ul>
+            <li class="sub_categories" sub_category_id="{{ $category->id }}">
               @foreach($category->subCategories as $sub)
-                  <!-- <li class="sub_categories" sub_category_inner="{{ $category->id }}"> -->
+                  
                       <form action="{{ route('post.show') }}" method="get">
                         <input type="hidden" name="sub_category_id" value="{{ $sub->id }}">
                         <button type="submit" class="category_btn sub">{{ $sub->sub_category }}</button>
                       </form>
-                  <!-- </li> -->
+                  
               @endforeach
-            </div>
+            </li>
+          </ul>
             @endforeach
-      </ul>
+      </div>
     </div>
   </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>

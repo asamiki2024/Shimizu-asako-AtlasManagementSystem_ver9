@@ -56,10 +56,10 @@
   </div>
   <div class="search_area w-25 border">
     <div class="search-box">
-      <div><p style="margin-bottom:5%; font-size:20px;">検索</p>
+      <div class="search-box1"><p style="margin-bottom:5%; font-size:20px;">検索</p>
         <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
       </div>
-      <div style="margin-top:5%;">
+      <div class="search-box2"style="margin-top:5%;">
         <lavel>カテゴリ</lavel>
           <p style="margin-top:5%;">
             <select form="userSearchRequest" name="category">
@@ -68,14 +68,16 @@
             </select>
           </p>
       </div>
-      <div>
+      <div class="search-box3">
         <label>並び替え</label>
-        <select name="updown" form="userSearchRequest">
-          <option value="ASC">昇順</option>
-          <option value="DESC">降順</option>
-        </select>
+          <p>
+            <select name="updown" form="userSearchRequest">
+              <option value="ASC">昇順</option>
+              <option value="DESC">降順</option>
+            </select>
+          </p>
       </div>
-      <div class="">
+      <div class="search-box4">
         <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
         <div class="search_conditions_inner">
           <div>
