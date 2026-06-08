@@ -95,8 +95,15 @@ thead tr th:nth-child(7) {
   color: #FF0000;
 }
 
-.day-blank div:nth-child(6) {
+/* 過去日の土曜日の色指定 */
+/* tbody tr td:nth-childここまで親タグを指定(6)何番目かを指定 .day子タグを指定  */
+tbody tr td:nth-child(6) .day {
   color: #0000FF;
+}
+
+/* 過去日の日曜日の色指定 */
+tbody tr td:nth-child(7) .day {
+  color: #FF0000;
 }
 
 /* 予約ボタン */
