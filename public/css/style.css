@@ -489,7 +489,7 @@ tbody tr td:nth-child(7) .day {
   margin: auto;
 }
 /*開いた状態の矢印描画*/
-.accordion label[type=checkbox]:checked + label:after{
+.accordion label[type=hidden]:checked + label:after{
   content:"";
   display:block;
   width:8px;
