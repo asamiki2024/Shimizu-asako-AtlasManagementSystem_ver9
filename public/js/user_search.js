@@ -18,7 +18,7 @@ $(function () {
       $('.main_categories').click(function () {
         var category_id = $(this).attr('category_id');
         $('.sub_categories[sub_category_id="'+ category_id +'"]').slideToggle();
-        $(this).toggleClass('open');
+        $(this).toggleClass('active');
       });
 
       // [sub_category_id="'+ category_id +'"]文字列の途中に変数を埋め込むための書き方

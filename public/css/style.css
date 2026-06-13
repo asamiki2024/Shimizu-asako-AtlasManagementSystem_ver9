@@ -436,9 +436,18 @@ tbody tr td:nth-child(7) .day {
   display: none;
 }
 
+.sub_categories form {
+  border-bottom: solid 1px lightgray;
+    width: 80%;
+    margin-left: 10%;
+}
+
 .sub {
   color: black;
+  padding: 3px;
 }
+
+
 
 /* 投稿ごとのサブカテゴリー */
 .sub_category_name {
@@ -462,48 +471,51 @@ tbody tr td:nth-child(7) .day {
 }
 
 /*バー部分*/
-.accordion label {
-  cursor :pointer;
+.main_categories{
+  /* cursor :pointer; */
   display: block;
-  text-decoration: none;
+  /* text-decoration: none; */
   line-height: 1;
   position: relative;
   margin: 0 0 10px;
   padding: 10px;
+  border-bottom: solid 1px black;
 }
 /*閉じた状態の矢印描画*/
-.accordion label:after{
+.main_categories::after {
   content:"";
   display:block;
-  width:8px;
-  height:8px;
-  border-top: #fff 2px solid;
-  border-right: #fff 2px solid;
-  -webkit-transform: rotate(135deg);
-  -ms-transform: rotate(135deg);
+  width:10px;
+  height: 10px;
+  border-top: solid 1px black;
+  border-right:solid 1px black;
+  /* -webkit-transform: rotate(135deg); */
+  /* -ms-transform: rotate(135deg); */
   transform: rotate(135deg);
+  transition: transform 0.5s ease-in-out, top 0.5s ease-in-out;
   position:absolute;
-  right: 2%;
-  top: 0;
-  bottom: 15%;
-  margin: auto;
+  right: 25px;
+  top: 25%;
+  /* bottom: 15%; */
+  /* margin: auto; */
 }
 /*開いた状態の矢印描画*/
-.accordion label[type=hidden]:checked + label:after{
-  content:"";
-  display:block;
-  width:8px;
-  height:8px;
-  border-top: #fff 2px solid;
-  border-right: #fff 2px solid;
+.main_categories.active::after {
+  /* content:""; */
+  /* display:block; */
+  /* width:8px; */
+  /* height:8px; */
+  /* border-top: black 2px solid;
+  border-right: black 2px solid;
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  position:absolute;
+  transform: rotate(-45deg); */
+  /* position:absolute;
   right: 2%;
   top: 7%;
   bottom: 0;
-  margin: auto;
+  margin: auto; */
+  transform: rotate(-45deg);
 }
 
 
