@@ -472,9 +472,7 @@ tbody tr td:nth-child(7) .day {
 
 /*バー部分*/
 .main_categories{
-  /* cursor :pointer; */
   display: block;
-  /* text-decoration: none; */
   line-height: 1;
   position: relative;
   margin: 0 0 10px;
@@ -489,41 +487,17 @@ tbody tr td:nth-child(7) .day {
   height: 10px;
   border-top: solid 1px black;
   border-right:solid 1px black;
-  /* -webkit-transform: rotate(135deg); */
-  /* -ms-transform: rotate(135deg); */
   transform: rotate(135deg);
   transition: transform 0.5s ease-in-out, top 0.5s ease-in-out;
   position:absolute;
   right: 25px;
   top: 25%;
-  /* bottom: 15%; */
-  /* margin: auto; */
 }
 /*開いた状態の矢印描画*/
+/* main_categoriesをactiveクラスで指定して動かしたい場所を指定して矢印を動かす */
 .main_categories.active::after {
-  /* content:""; */
-  /* display:block; */
-  /* width:8px; */
-  /* height:8px; */
-  /* border-top: black 2px solid;
-  border-right: black 2px solid;
-  -webkit-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg); */
-  /* position:absolute;
-  right: 2%;
-  top: 7%;
-  bottom: 0;
-  margin: auto; */
   transform: rotate(-45deg);
 }
-
-
-
-
-
-
-
 
 /* ユーザー検索 */
 .reserve_users_area {
@@ -585,6 +559,9 @@ tbody tr td:nth-child(7) .day {
   background-color: #03AAD2;
   border: none;
   border-radius: 5px;
+  width: 80%;
+  padding: 5%;
+  margin-top: 5%;
 }
 
 
@@ -593,16 +570,60 @@ tbody tr td:nth-child(7) .day {
   border: none;
   color: #03AAD2;
   background-color: #ECF1F6;
+  width: 80%;
+  padding: 5%;
 }
 
+/* 検索条件の追加アコーディオンメニュー */
+.search_conditions {
+  border-bottom: solid 2px lightgray;
+  display: block;
+  position: relative;
+  padding: 10px;
+  width: 80%;
+}
+
+/* 閉じている時のレイアウト */
+.search_conditions::after {
+  content:"";
+  display:block;
+  width:10px;
+  height: 10px;
+  border-top: solid 1px black;
+  border-right:solid 1px black;
+  transform: rotate(135deg);
+  transition: transform 0.5s ease-in-out, top 0.5s ease-in-out;
+  position:absolute;
+  right: 25px;
+  top: 35%;
+}
+
+/* 開いている時の動き */
+.search_conditions.active::after {
+  transform: rotate(-45deg);
+}
+
+/* アコーディオンメニュータイトル */
 .search_conditions span {
   cursor: pointer;
+  color: #606060;
 }
 
+/* アコーディオンメニュー中身 */
 .search_conditions_inner {
   display: none;
-  background: #FFF;
+  background: #ECF1F6;
+  justify-content: space-around;
+  margin-top: 5%;
 }
+
+/* 選択科目中身 */
+.subjects-box {
+  display: flex;
+  justify-content: space-around;
+  width: 45%;
+}
+
 
 .subject_edit_btn {
   font-size: 12px;

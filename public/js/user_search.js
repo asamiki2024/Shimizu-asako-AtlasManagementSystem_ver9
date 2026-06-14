@@ -1,7 +1,8 @@
 $(function () {
   $('.search_conditions').click(function () {
     $('.search_conditions_inner').slideToggle();
-  });
+    $(this).toggleClass('active');
+  }); 
 
   $('.subject_edit_btn').click(function () {
     $('.subject_inner').slideToggle();
@@ -22,7 +23,8 @@ $(function () {
       });
 
       // [sub_category_id="'+ category_id +'"]文字列の途中に変数を埋め込むための書き方
-  
+      // activeクラスで指定して矢印を動かす
+
   // $('.main_categories').click(function () {
   //   console.log('.sub_category_inner');
   //   let category_id = $(this).attr('category_id');

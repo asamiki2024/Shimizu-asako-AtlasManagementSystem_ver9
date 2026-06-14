@@ -56,11 +56,11 @@
   </div>
   <div class="search_area w-25 border">
     <div class="search-box">
-      <div class="search-box1"><p style="margin-bottom:5%; font-size:20px;">検索</p>
+      <div class="search-box1"><p style="margin-bottom:5%; font-size:20px; color: #606060;">検索</p>
         <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
       </div>
       <div class="search-box2"style="margin-top:5%;">
-        <lavel>カテゴリ</lavel>
+        <lavel style="color: #606060;">カテゴリ</lavel>
           <p style="margin-top:5%;">
             <select form="userSearchRequest" name="category">
               <option value="name">名前</option>
@@ -69,7 +69,7 @@
           </p>
       </div>
       <div class="search-box3">
-        <label>並び替え</label>
+        <label style="color: #606060;">並び替え</label>
           <p>
             <select name="updown" form="userSearchRequest">
               <option value="ASC">昇順</option>
@@ -80,34 +80,40 @@
       <div class="search-box4">
         <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
         <div class="search_conditions_inner">
-          <div>
-            <label>性別</label>
-            <span>男</span><input type="radio" name="sex" value="1" form="userSearchRequest">
-            <span>女</span><input type="radio" name="sex" value="2" form="userSearchRequest">
-            <span>その他</span><input type="radio" name="sex" value="3" form="userSearchRequest">
+          <div class="search_conditions_inner1">
+            <label style="color: #606060;">性別</label>
+              <p class="search_conditions_box">
+                <span>男</span><input type="radio" name="sex" value="1" form="userSearchRequest">
+                <span>女</span><input type="radio" name="sex" value="2" form="userSearchRequest">
+                <span>その他</span><input type="radio" name="sex" value="3" form="userSearchRequest">
+              </p>
           </div>
-        <div>
-            <label>権限</label>
-            <select name="role" form="userSearchRequest" class="engineer">
-              <option selected disabled>----</option>
-              <option value="1">教師(国語)</option>
-              <option value="2">教師(数学)</option>
-              <option value="3">教師(英語)</option>
-              <option value="4" class="">生徒</option>
-            </select>
+        <div class="search_conditions_inner2">
+            <label style="color: #606060;">権限</label>
+              <p>
+                <select name="role" form="userSearchRequest" class="engineer">
+                  <option selected disabled>----</option>
+                  <option value="1">教師(国語)</option>
+                  <option value="2">教師(数学)</option>
+                  <option value="3">教師(英語)</option>
+                  <option value="4" class="">生徒</option>
+                </select>
+              </p>
           </div>
-          <div class="selected_engineer">
-            <label>選択科目</label>
+          <div class="selected_engineer search_conditions_inner3">
+            <label style="color: #606060;">選択科目</label>
             <!-- 新規ユーザー登録の記述を参考(registerブレードの177～182行目の記述参考) -->
-            @foreach($subjects as $subject)
-            <!-- 93行目　$subjectに入っている科目一覧を一件ずつ取り出して$Subjectという変数名で使えるようにする。科目の数だけ記述内に表示させる -->
-              <div class="search_subject">
-                <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
-            <!-- タイプはチックボックス。 name="subject[]"value="{{ $subject->id }} はチェックした項目の配列としておくられる。国語と英語ならSubject＝[1，3]のようになる-->
-                <label>{{ $subject->subject }}</label>
-            <!-- 画面に表示する文字。選択科目の名前が表示される -->
+             <div class="subjects-box">
+                @foreach($subjects as $subject)
+                <!-- 93行目　$subjectに入っている科目一覧を一件ずつ取り出して$Subjectという変数名で使えるようにする。科目の数だけ記述内に表示させる -->
+                  <div class="search_subject">
+                    <label>{{ $subject->subject }}</label>
+                    <!-- 画面に表示する文字。選択科目の名前が表示される -->
+                    <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
+                <!-- タイプはチックボックス。 name="subject[]"value="{{ $subject->id }} はチェックした項目の配列としておくられる。国語と英語ならSubject＝[1，3]のようになる-->
+                  </div>
+                @endforeach
               </div>
-            @endforeach
           </div>
       </div>
       </div>
