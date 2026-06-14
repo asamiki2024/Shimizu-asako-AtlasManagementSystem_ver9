@@ -1,50 +1,61 @@
 <x-sidebar>
-<p>ユーザー検索</p>
 <div class="search_content w-100 border d-flex">
   <div class="reserve_users_area">
     @foreach($users as $user)
     <div class="border one_person" style="box-shadow:0 0 8px #808080;">
       <div>
-        <span>ID : </span><span>{{ $user->id }}</span>
+        <span style="color: #808080;
+    font-weight: bold;">ID : </span><span>{{ $user->id }}</span>
       </div>
-      <div><span>名前 : </span>
+      <div><span style="color: #808080;
+    font-weight: bold;">名前 : </span>
         <a href="{{ route('user.profile', ['id' => $user->id]) }}">
           <span>{{ $user->over_name }}</span>
           <span>{{ $user->under_name }}</span>
         </a>
       </div>
       <div>
-        <span>カナ : </span>
+        <span style="color: #808080;
+    font-weight: bold;">カナ : </span>
         <span>({{ $user->over_name_kana }}</span>
         <span>{{ $user->under_name_kana }})</span>
       </div>
       <div>
         @if($user->sex == 1)
-        <span>性別 : </span><span>男</span>
+        <span style="color: #808080;
+    font-weight: bold;">性別 : </span><span>男</span>
         @elseif($user->sex == 2)
-        <span>性別 : </span><span>女</span>
-        @else
-        <span>性別 : </span><span>その他</span>
+        <span style="color: #808080;
+    font-weight: bold;">性別 : </span><span>女</span>
+        @elseif($user->sex == 3)
+        <span style="color: #808080;
+    font-weight: bold;">性別 : </span><span>その他</span>
         @endif
       </div>
       <div>
-        <span>生年月日 : </span><span>{{ $user->birth_day }}</span>
+        <span style="color: #808080;
+    font-weight: bold;">生年月日 : </span><span>{{ $user->birth_day }}</span>
       </div>
       <div>
         @if($user->role == 1)
-        <span>権限 : </span><span>教師(国語)</span>
+        <span style="color: #808080;
+    font-weight: bold;">役職 : </span><span>教師(国語)</span>
         @elseif($user->role == 2)
-        <span>権限 : </span><span>教師(数学)</span>
+        <span style="color: #808080;
+    font-weight: bold;">役職 : </span><span>教師(数学)</span>
         @elseif($user->role == 3)
-        <span>権限 : </span><span>講師(英語)</span>
+        <span style="color: #808080;
+    font-weight: bold;">役職 : </span><span>講師(英語)</span>
         @else
-        <span>権限 : </span><span>生徒</span>
+        <span style="color: #808080;
+    font-weight: bold;">役職 : </span><span>生徒</span>
         @endif
       </div>
       <div>
         <!-- 一覧で生徒(4)のみ選択科目表示。教師(1.2.3)は非表示にする 46行目～51行目まで -->
         @if($user->role == 4)
-          <span>選択科目 : 
+          <span style="color: #808080;">
+          選択科目 : 
           <!-- 選択科目の表示はprofileブレードの11行目～13行目を参考 -->
           @foreach($user->subjects as $subject)
           </span><span>{{ $subject->subject }}</span>

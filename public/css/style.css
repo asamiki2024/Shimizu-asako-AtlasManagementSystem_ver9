@@ -508,7 +508,6 @@ tbody tr td:nth-child(7) .day {
   height: 90vh;
   overflow: scroll;
   padding: 10px;
-  background: #FFF;
   border-radius: 5px;
   /* 横4列縦3列 */
   display: grid;
@@ -516,15 +515,20 @@ tbody tr td:nth-child(7) .day {
   gap: 16px;
 }
 
-.reserve_users_area span {
-  font-size: 12px;
-}
-
+/* ユーザーボックスレイアウト */
 .one_person {
   width: 250px;
   height: 250px;
   padding: 25px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  background: #FFF;
 }
+.reserve_users_area span {
+  font-size: 12px;
+  font-weight: bold;
+}
+
 
 /* ユーザー検索ボタンエリア */
 /* キーワード、ボタンエリアのフォームの大きさ、高さ */
