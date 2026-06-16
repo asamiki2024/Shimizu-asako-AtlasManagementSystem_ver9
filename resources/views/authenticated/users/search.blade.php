@@ -1,5 +1,5 @@
 <x-sidebar>
-<div class="search_content w-100 border d-flex">
+<div class="search_content w-100 d-flex">
   <div class="reserve_users_area">
     @foreach($users as $user)
     <div class="border one_person" style="box-shadow:0 0 8px #808080;">
@@ -53,9 +53,9 @@
       </div>
       <div>
         <!-- 一覧で生徒(4)のみ選択科目表示。教師(1.2.3)は非表示にする 46行目～51行目まで -->
+        <span style="color: #808080;">
+        選択科目 : 
         @if($user->role == 4)
-          <span style="color: #808080;">
-          選択科目 : 
           <!-- 選択科目の表示はprofileブレードの11行目～13行目を参考 -->
           @foreach($user->subjects as $subject)
           </span><span>{{ $subject->subject }}</span>
@@ -65,9 +65,9 @@
     </div>
     @endforeach
   </div>
-  <div class="search_area w-25 border">
+  <div class="search_area w-25">
     <div class="search-box">
-      <div class="search-box1"><p style="margin-bottom:5%; font-size:20px; color: #606060;">検索</p>
+      <div class="search-box1"><p style="margin-top:3rem; margin-bottom:5%; font-size:20px; color: #606060;">検索</p>
         <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
       </div>
       <div class="search-box2"style="margin-top:5%;">

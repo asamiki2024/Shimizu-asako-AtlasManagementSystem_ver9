@@ -244,6 +244,7 @@ tbody tr td:nth-child(7) .day {
   background: #03AAD2;
   text-align: center;
   height: 30px;
+  margin-top: 3rem;
 }
 
 /* ボタンの色 */
@@ -505,10 +506,13 @@ tbody tr td:nth-child(7) .day {
 .reserve_users_area {
   display: flex;
   flex-wrap: wrap;
-  width: 1100px;
+  width: 1140px;
   margin: 10px auto;
-  height: 90vh;
-  overflow: scroll;
+  height: 95vh;
+  /* スクロール縦のみ */
+  overflow-y: scroll;
+  /* スクロール横なし */
+  overflow-x: hidden;
   padding: 10px;
   border-radius: 5px;
   /* 横4列縦3列 */
@@ -530,7 +534,6 @@ tbody tr td:nth-child(7) .day {
   font-size: 12px;
   font-weight: bold;
 }
-
 
 /* ユーザー検索ボタンエリア */
 /* キーワード、ボタンエリアのフォームの大きさ、高さ */
@@ -556,6 +559,7 @@ tbody tr td:nth-child(7) .day {
 
 .search-box2 select, .search-box3 select, .search-box4 select{
   height: 30px;
+  width: 35%;
 }
 
 
