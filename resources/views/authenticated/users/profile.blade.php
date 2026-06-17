@@ -12,19 +12,23 @@
         <span>{{ $subject->subject }}</span>
         @endforeach
       </div>
-      <div class="subject_edit">
+      <div class="subject_edit" style="margin-top:2%;">
         @can('admin')
         <span class="subject_edit_btn">選択科目の編集</span>
-        <div class="subject_inner">
+        <div class="subject_inner inner">
           <form action="{{ route('user.edit') }}" method="post">
-            @foreach($subject_lists as $subject_list)
-            <div>
-              <label>{{ $subject_list->subject }}</label>
-              <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
+            <div style="display:flex; line-height: 2;">
+              @foreach($subject_lists as $subject_list)
+              <div style="margin-right:2%;">
+                <label>{{ $subject_list->subject }}</label>
+                <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
+              </div>
+              @endforeach
+              <div>
+                <input type="submit" value="登録" class="btn btn-primary btn-top">
+                <input type="hidden" name="user_id" value="{{ $user->id }}">
+              </div>
             </div>
-            @endforeach
-            <input type="submit" value="編集" class="btn btn-primary">
-            <input type="hidden" name="user_id" value="{{ $user->id }}">
             {{ csrf_field() }}
           </form>
         </div>

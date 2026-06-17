@@ -636,11 +636,15 @@ tbody tr td:nth-child(7) .day {
 
 
 .subject_edit_btn {
-  font-size: 12px;
-  color: #0000FF;
+  /* font-size: 12px; */
+  color: #03AAD2;
   cursor: pointer;
 }
 
 .subject_inner {
   display: none;
 }
+
+/* .btn-top {
+  padding: 0 12px;
+} */
