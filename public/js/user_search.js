@@ -6,6 +6,7 @@ $(function () {
 
   $('.subject_edit_btn').click(function () {
     $('.subject_inner').slideToggle();
+    $(this).toggleClass('active');
   });
 
   //  $('.main_categories').click(function () {
