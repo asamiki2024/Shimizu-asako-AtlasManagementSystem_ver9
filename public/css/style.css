@@ -123,8 +123,19 @@ tbody tr td:nth-child(7) .day {
   font-size: 12px;
 }
 
+/* スクール予約枠登録ページ */
+.box {
+  border: none;
+  background-color: #FFF;
+  box-shadow:0 0 8px #808080;
+  width: 80%;
+  height: 94vh;
+  margin-left: 10%;
+  padding: 20px;
+}
+
 .adjust-table {
-  width: 70% !important;
+  width: 95% !important;
 }
 
 .adjust-table td {
@@ -135,9 +146,26 @@ tbody tr td:nth-child(7) .day {
   justify-content: space-around;
 }
 
+/* スクール予約枠登録ページの登録ボタン */
 .adjust-table-btn {
-  width: 70%;
+  width: 95%;
 }
+
+/* スクール予約枠登録ページの登録ボタンの余白 */
+.adjust-table-btn input {
+  margin-top: 20px;
+}
+
+/* スクール予約枠登録ページの土曜日の部数色変 */
+tbody tr td:nth-child(6) .adjust-area{
+  color: #0000FF;
+}
+
+/* スクール予約枠登録ページの日曜日の部数色変 */
+tbody tr td:nth-child(7) .adjust-area{
+  color: #FF0000;
+}
+
 
 /* モーダル */
 .modal {
@@ -199,6 +227,7 @@ tbody tr td:nth-child(7) .day {
 .reserve-table tbody tr:nth-child(even) {
   background-color:#e0ffff;
 }
+
 
 /* 掲示板の投稿編集のモーダル */
 .modal__content {
@@ -529,7 +558,21 @@ tbody tr td:nth-child(7) .day {
   font-size: 1.2rem;
   border-radius: 8px;
   background: #FFF;
+  /* display: flex;
+  flex-direction: column; 縦並びの場合 */
+  /* gap: 0; */
 }
+
+div.one_person_inner.role1{
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+/* .one_person.is-five .one_person_inner {
+  margin-bottom: 20px;
+} */
+
+
 .reserve_users_area span {
   font-size: 12px;
   font-weight: bold;
