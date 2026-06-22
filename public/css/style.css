@@ -166,6 +166,21 @@ tbody tr td:nth-child(7) .adjust-area{
   color: #FF0000;
 }
 
+/* スクール予約確認画面 */
+.calender-box {
+  border: none;
+  background-color: #FFF;
+  box-shadow:0 0 8px #808080;
+  width: 95%;
+  height: 830px;
+  padding: 20px;
+  margin-top: 4%;
+}
+
+.day_part {
+  display: flex;
+  justify-content: space-around;
+}
 
 /* モーダル */
 .modal {
