@@ -558,15 +558,19 @@ tbody tr td:nth-child(7) .adjust-area{
   font-size: 1.2rem;
   border-radius: 8px;
   background: #FFF;
-  /* display: flex;
-  flex-direction: column; 縦並びの場合 */
-  /* gap: 0; */
+  display: flex;
+  /* 縦並びの場合 */
+  flex-direction: column;
+  /* 縦幅を同じ空白で調整。 */
+  justify-content: space-around;
+  /*親のone_personの箱の大きさを一番高い要素に合わせて伸びる */
+  align-items: stretch;
 }
 
-div.one_person_inner.role1{
+/* div.one_person_inner.role1{
   margin-top: 3%;
   margin-bottom: 3%;
-}
+} */
 
 /* .one_person.is-five .one_person_inner {
   margin-bottom: 20px;
