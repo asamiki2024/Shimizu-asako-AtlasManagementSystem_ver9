@@ -61,13 +61,19 @@
               @error('sex')
               <div class="register-error">{{ $message }}</div>
                 @enderror
-        <div class="mt-1 d-flex" style="justify-content:center; gap:20px;">
-          <input type="radio" name="sex" class="sex" value="1">
-          <label style="font-size:13px">男性</label>
-          <input type="radio" name="sex" class="sex" value="2">
-          <label style="font-size:13px">女性</label>
-          <input type="radio" name="sex" class="sex" value="3">
-          <label style="font-size:13px">その他</label>
+        <div class="mt-1 d-flex" style="justify-content:space-around;">
+          <div>
+            <input type="radio" name="sex" class="sex" value="1">
+            <label style="font-size:13px">男性</label>
+          </div>
+          <div>
+            <input type="radio" name="sex" class="sex" value="2">
+            <label style="font-size:13px">女性</label>
+          </div>
+          <div>
+            <input type="radio" name="sex" class="sex" value="3">
+            <label style="font-size:13px">その他</label>
+          </div>
         </div>
         <!-- エラーメッセージ表示 -->
               @error('birth_day')
