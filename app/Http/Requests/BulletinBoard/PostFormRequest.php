@@ -24,6 +24,7 @@ class PostFormRequest extends FormRequest
     public function rules()
     {
         return [
+            'post_sub_category_name' => 'required|unique:sub_categories,sub_category',
             'post_title' => 'required|string|max:100',
             'post_body' => 'required|string|max:2000',
         ];
@@ -31,6 +32,9 @@ class PostFormRequest extends FormRequest
 
     public function messages(){
         return [
+            'post_sub_category_name.required' => 'サブカテゴリーは必ず選んでください。',
+            'post_sub_category_name.unique' =>'サブカテゴリーは既に登録されています。',
+            // 'post_sub_category_name.exists' => '登録されているサブカテゴリーを選んでください。',
             'post_title.required' => 'タイトルは必ず入力してください。',
             'post_title.string' => 'タイトルは文字列である必要があります。',
             'post_title.max' => 'タイトルは100文字以内で入力してください。',
