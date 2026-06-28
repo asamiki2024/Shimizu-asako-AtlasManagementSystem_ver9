@@ -73,7 +73,8 @@ class RegisterRequest extends FormRequest
             'sex.required' =>'性別を必ず選んでください。',
             'birth_day.required' =>'生年月日が未入力です。',
             'role.required' =>'役職を必ず選択してください。',
-            'password.required','password_confirmation.required' =>'パスワードを必ず入力してください。',
+            'password.required'=>'パスワードを必ず入力してください。',
+            'password_confirmation.required' =>'パスワードを必ず入力してください。',
             //文字列
             'over_name.string','under_name.string','over_name_kana.string','under_name_kana.string' =>'文字列で入力してください。',
             'mail_address.email' =>'メールアドレス形式で入力してください。',
@@ -86,8 +87,10 @@ class RegisterRequest extends FormRequest
             'over_name_kana.max' =>'姓を30文字以下で入力してください。',
             'under_name_kana.max' =>'名を30文字以下で入力してください。',
             'mail_address.max' =>'30文字以下で入力してください。',
-            'password.min','password_confirmation.min' =>'8文字以上で入力してください。',
-            'password.max','password_confirmation.max' =>'30文字以下で入力してください。',
+            'password.min'=>'8文字以上で入力してください。',
+            'password_confirmation.min' =>'8文字以上で入力してください。',
+            'password.max' =>'30文字以下で入力してください。',
+            'password_confirmation.max' =>'30文字以下で入力してください。',
             //メールアドレス登録済み無効
             'mail_address.unique' =>'登録済みのメールアドレスです。',
             //生年月日について
