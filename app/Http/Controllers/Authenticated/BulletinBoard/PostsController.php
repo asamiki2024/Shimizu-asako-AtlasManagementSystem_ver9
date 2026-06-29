@@ -103,7 +103,8 @@ class PostsController extends Controller
         // dd($request->sub_category_id);
         $post = Post::create([
             'user_id' => Auth::id(),
-            'post_sub_category_name' => 'required|unique:sub_categories,sub_category',
+            'sub_category_id' => 'required|unique:sub_categories,sub_category|exists:sub_categories,main_category_id',
+            // . $request->$sub_category_id,
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
@@ -148,15 +149,16 @@ class PostsController extends Controller
         //サブカテゴリーのバリデーション
         //existsは、登録されている内容と同じものか判断。sub_categoriesテーブルのカラムmain_category_idを指定。
         //uniqueは、同じものを登録しない為、sub_categoriesテーブルのカラムsub_categoryを指定。
+        // sub_category,NULL,id,main_category_id, '. $request->main_category_id→サブカテゴリーテーブルに登録されているメインカテゴリーIDとリクエストで指定しているメインカテゴリーのIDが一緒のものを選んでいるかどうかをみている。
         // dd($request);
         $validated = $request->validate([
             'main_category_id' => 'required|exists:main_categories,id',
-            'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category|exists:sub_categories,main_category_id',
+            'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category,NULL,id,main_category_id, '. $request->main_category_id ,
         ]);
         // dd($validated);
         SubCategory::create([
             'main_category_id' => $validated['main_category_id'],
-            'sub_category_name' => $validated['sub_category_name'],
+            'sub_category' => $validated['sub_category_name'],
         ]);
         return redirect()->route('post.input');
     }

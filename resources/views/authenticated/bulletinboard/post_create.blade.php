@@ -2,8 +2,8 @@
 <div class="post_create_container d-flex">
   <div class="post_create_area border w-50 m-5 p-5">
     <div>
-      @if($errors->first('post_sub_category_name'))
-      <span class="error_message">{{ $errors->first('post_sub_category_name') }}</span>
+      @if($errors->first('sub_category_id'))
+      <span class="error_message">{{ $errors->first('sub_category_id') }}</span>
       @endif
       <p class="mb-0">カテゴリー</p>
       <select class="w-100" form="postCreate" name="sub_category_id">
@@ -53,13 +53,16 @@
         </form>
       </div>
       <!-- サブカテゴリー追加 -->
+       @if($errors->first('main_category_id'))
+      <span class="error_message">{{ $errors->first('main_category_id') }}</span>
+      @endif
        @if($errors->first('sub_category_name'))
       <span class="error_message">{{ $errors->first('sub_category_name') }}</span>
       @endif
        <p class="m-0">サブカテゴリー</p>
        <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">{{ csrf_field() }}
         <!-- メインカテゴリー登録済みをプルダウンで表示 -->
-        <select class="w-100" name="main_category_id" id="main_category_id">
+        <select class="w-100" name="main_category_id" form="subCategoryRequest">
           @foreach($main_categories as $main_category)
           <option label="{{ $main_category->main_category }}" value="{{ $main_category->id }}">
           </option>

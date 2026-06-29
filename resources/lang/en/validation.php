@@ -41,7 +41,7 @@ return [
     'distinct' => 'The :attribute field has a duplicate value.',
     'email' => 'The :attribute must be a valid email address.',
     'ends_with' => 'The :attribute must end with one of the following: :values.',
-    'exists' => ' :attribute選択してください。',
+    'exists' => ' :attributeを正しく選択してください。',
     'file' => 'The :attribute must be a file.',
     'filled' => 'The :attribute field must have a value.',
     'gt' => [
@@ -153,7 +153,7 @@ return [
         'post_title' => 'タイトル',
         'post_body' => '内容',
         'comment' => 'コメント',
-        'main_category_name' =>'メインカテゴリー',
+        'main_category_id' =>'メインカテゴリー',
         'sub_category_name' =>'サブカテゴリー',
         'sex' => '性別',
         'role' => '役職'
