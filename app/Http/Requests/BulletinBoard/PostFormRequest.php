@@ -24,7 +24,7 @@ class PostFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'sub_category_id' => 'required|unique:sub_categories,sub_category|exists:sub_categories,main_category_id',
+            'sub_category_id' => 'required|exists:sub_categories,id',
             // . $request->$sub_category_id,
             'post_title' => 'required|string|max:100',
             'post_body' => 'required|string|max:2000',

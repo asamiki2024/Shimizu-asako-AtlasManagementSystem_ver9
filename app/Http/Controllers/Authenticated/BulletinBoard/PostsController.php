@@ -103,7 +103,7 @@ class PostsController extends Controller
         // dd($request->sub_category_id);
         $post = Post::create([
             'user_id' => Auth::id(),
-            'sub_category_id' => 'required|unique:sub_categories,sub_category|exists:sub_categories,main_category_id',
+            // 'sub_category_id' => 'required|unique:sub_categories,sub_category|exists:sub_categories,main_category_id',
             // . $request->$sub_category_id,
             'post_title' => $request->post_title,
             'post' => $request->post_body

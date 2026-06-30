@@ -9,13 +9,15 @@
       <select class="w-100" form="postCreate" name="sub_category_id">
         <!-- メインカテゴリー表示  -->
       @foreach($main_categories as $main_category)
-        <option disabled style="color: gray;" label="{{ $main_category->main_category }}">
-          </option>
+        <optgroup disabled style="color: gray;" label="{{ $main_category->main_category }}">
+          </optgroup>
         <!-- サブカテゴリー表示 -->
         @foreach($main_category->subCategories as $sub_category)
-        <option style="color: black;" label="{{ $sub_category->sub_category }}"
-          value="{{ $sub_category->id }}">
-        </option>
+          @if($sub_category->main_category_id===$main_category->id)
+          <option style="color: black;" label="{{ $sub_category->sub_category }}"
+            value="{{ $sub_category->id }}">
+          </option>
+          @endif
         @endforeach
       @endforeach
       </select>
