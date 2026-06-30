@@ -19,8 +19,9 @@ class PostsController extends Controller
     public function show(Request $request){
         $categories = MainCategory::get();
         // 追加記述　サブカテゴリーとキーワードが完全一致するときの条件分岐
-        $posts = Post::latest()->with('user', 'postComments')->get();
+        $posts = Post::orderby('id', 'desc' )->with('user', 'postComments')->get();
         //$postsに投稿(post)を全部取得する。user=投稿者,postComments=投稿のコメント
+        // orderby('id', 'desc' )で新しく登録された順に並び替え。IDで指定して並び替え。
         $like = new Like;
         $post_comment = new Post;
         // 追加記述
@@ -35,7 +36,7 @@ class PostsController extends Controller
             // dd($sub_category);
             if(($sub_category)){
             //サブカテゴリーが見つかった場合の分岐
-                $posts = $sub_category->post()->latest()->with('subCategories','user', 'postComments')
+                $posts = $sub_category->post()->with('subCategories','user', 'postComments')
                 ->get();
                 //$sub_category->post()はSubCategoryモデルに定義したリレーションを使ってサブカテゴリーに紐づく投稿一覧のクエリを作っている。
                 //->with('subCategories','user', 'postComments')->get();は投稿を表示する時に必要なもの(サブカテゴリー名、投稿者、コメント)をまとめて読み込んでいる。
@@ -103,6 +104,7 @@ class PostsController extends Controller
         // dd($request->sub_category_id);
         $post = Post::create([
             'user_id' => Auth::id(),
+            // サブカテゴリーのバリエーションはPostテーブルに登録する際に必要なバリエーション。その為、サブカテゴリーはPostテーブルにない為不要。
             // 'sub_category_id' => 'required|unique:sub_categories,sub_category|exists:sub_categories,main_category_id',
             // . $request->$sub_category_id,
             'post_title' => $request->post_title,

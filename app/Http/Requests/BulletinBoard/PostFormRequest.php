@@ -45,3 +45,4 @@ class PostFormRequest extends FormRequest
         ];
     }
 }
+// このページの役割新規投稿するとこのページでバリエーションにかけられる。その為ここにバリエーションを書く必要がある。
